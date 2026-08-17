@@ -1,0 +1,24 @@
+[
+  {
+    "dataset_id": "local-reference",
+    "labels": {
+      "es": "Referencia local instrumentada · interactiva",
+      "en": "Instrumented local reference · interactive"
+    },
+    "description": {
+      "es": "Muestra docente strong-bm1 0j de 500 eventos; telemetría real, no reemplaza el benchmark inclusivo.",
+      "en": "500-event strong-bm1 0j teaching sample with real telemetry; it does not replace the inclusive benchmark."
+    }
+  },
+  {
+    "dataset_id": "reference",
+    "labels": {
+      "es": "Benchmark público agregado · publicado",
+      "en": "Published aggregate benchmark"
+    },
+    "description": {
+      "es": "Validación inclusiva strong-bm1 0j+1j+2j; cutflow exacto, sin eventos serializados.",
+      "en": "Inclusive strong-bm1 0j+1j+2j validation; exact cutflow, no serialized events."
+    }
+  }
+]

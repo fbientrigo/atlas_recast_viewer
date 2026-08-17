@@ -1,0 +1,96 @@
+{
+  "dataset_id": "local-reference",
+  "schema_version": "viewer.dataset.v1",
+  "instrumentation_regression": "PASSED",
+  "event_adapter_validation": "PASSED",
+  "comparison_contract": "exact normalized stdout plus exact six-significant-digit source output reproduction",
+  "scope": "500-event reconstructed strong-bm1 0-parton teaching sample; not the inclusive public benchmark",
+  "contextual_public_comparison": {
+    "jet_selection": {
+      "local_0j_pct": 99.80000000000001,
+      "public_inclusive_pct": 99.87405,
+      "relative_difference": -0.0007414338359161916,
+      "interpretation": "context only; no validation tolerance"
+    },
+    "mdv_gt_10_gev": {
+      "local_0j_pct": 31.4,
+      "public_inclusive_pct": 29.92715,
+      "relative_difference": 0.04921450923325467,
+      "interpretation": "context only; no validation tolerance"
+    },
+    "acceptance_x_efficiency": {
+      "local_0j_pct": 27.25118058874645,
+      "public_inclusive_pct": 26.84045,
+      "relative_difference": 0.015302671480785525,
+      "interpretation": "context only; no validation tolerance"
+    }
+  },
+  "checks": [
+    {
+      "name": "nominal_stdout_exact_except_pythia_clock",
+      "expected": "byte-identical after replacing only the Pythia wall-clock field",
+      "observed": "identical",
+      "passed": true
+    },
+    {
+      "name": "jet_selection.telemetry_reproduces_printed_source",
+      "expected": "9.980000e+01",
+      "observed": "9.980000e+01",
+      "passed": true
+    },
+    {
+      "name": "fiducial_dv.telemetry_reproduces_printed_source",
+      "expected": "9.980000e+01",
+      "observed": "9.980000e+01",
+      "passed": true
+    },
+    {
+      "name": "rxy_gt_4_mm.telemetry_reproduces_printed_source",
+      "expected": "3.140000e+01",
+      "observed": "3.140000e+01",
+      "passed": true
+    },
+    {
+      "name": "d0_gt_2_mm.telemetry_reproduces_printed_source",
+      "expected": "3.140000e+01",
+      "observed": "3.140000e+01",
+      "passed": true
+    },
+    {
+      "name": "tracks_ge_5.telemetry_reproduces_printed_source",
+      "expected": "3.140000e+01",
+      "observed": "3.140000e+01",
+      "passed": true
+    },
+    {
+      "name": "mdv_gt_10_gev.telemetry_reproduces_printed_source",
+      "expected": "3.140000e+01",
+      "observed": "3.140000e+01",
+      "passed": true
+    },
+    {
+      "name": "acceptance_x_efficiency.telemetry_reproduces_printed_source",
+      "expected": "2.725118e+01",
+      "observed": "2.725118e+01",
+      "passed": true
+    },
+    {
+      "name": "geometry_r_squared_exact_within_serialization_precision",
+      "expected": 0,
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "name": "track_d0_geometry_reproduces_recast_proxy",
+      "expected": 0,
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "name": "track_flags_reproduce_vertex_counts",
+      "expected": 0,
+      "observed": 0,
+      "passed": true
+    }
+  ]
+}

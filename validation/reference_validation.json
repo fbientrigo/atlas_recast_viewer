@@ -1,0 +1,215 @@
+{
+  "dataset_id": "reference",
+  "schema_version": "viewer.dataset.v1",
+  "internal_adapter_validation": "PASSED",
+  "reference_reproduction_validation": "PASSED",
+  "comparison_contract": "exact serialization agreement; no tolerance",
+  "checks": [
+    {
+      "name": "weighted_denominator_exact",
+      "expected": 9458.407,
+      "observed": 9458.407,
+      "passed": true
+    },
+    {
+      "name": "jet_selection.weighted_events_exact",
+      "expected": 9446.493,
+      "observed": 9446.493,
+      "passed": true
+    },
+    {
+      "name": "jet_selection.efficiency_pct_exact",
+      "expected": 99.87405,
+      "observed": 99.87405,
+      "passed": true
+    },
+    {
+      "name": "jet_selection.authors_reference_exact",
+      "expected": 99.81456,
+      "observed": 99.81456,
+      "passed": true
+    },
+    {
+      "name": "jet_selection.relative_difference_exact",
+      "expected": 0.0005960052321023777,
+      "observed": 0.0005960052321023777,
+      "passed": true
+    },
+    {
+      "name": "fiducial_dv.weighted_events_exact",
+      "expected": 9446.493,
+      "observed": 9446.493,
+      "passed": true
+    },
+    {
+      "name": "fiducial_dv.efficiency_pct_exact",
+      "expected": 99.87405,
+      "observed": 99.87405,
+      "passed": true
+    },
+    {
+      "name": "fiducial_dv.authors_reference_exact",
+      "expected": 99.81456,
+      "observed": 99.81456,
+      "passed": true
+    },
+    {
+      "name": "fiducial_dv.relative_difference_exact",
+      "expected": 0.0005960052321023777,
+      "observed": 0.0005960052321023777,
+      "passed": true
+    },
+    {
+      "name": "rxy_gt_4_mm.weighted_events_exact",
+      "expected": 2830.631,
+      "observed": 2830.631,
+      "passed": true
+    },
+    {
+      "name": "rxy_gt_4_mm.efficiency_pct_exact",
+      "expected": 29.92715,
+      "observed": 29.92715,
+      "passed": true
+    },
+    {
+      "name": "rxy_gt_4_mm.authors_reference_exact",
+      "expected": 29.71822,
+      "observed": 29.71822,
+      "passed": true
+    },
+    {
+      "name": "rxy_gt_4_mm.relative_difference_exact",
+      "expected": 0.007030367229262126,
+      "observed": 0.007030367229262126,
+      "passed": true
+    },
+    {
+      "name": "d0_gt_2_mm.weighted_events_exact",
+      "expected": 2830.631,
+      "observed": 2830.631,
+      "passed": true
+    },
+    {
+      "name": "d0_gt_2_mm.efficiency_pct_exact",
+      "expected": 29.92715,
+      "observed": 29.92715,
+      "passed": true
+    },
+    {
+      "name": "d0_gt_2_mm.authors_reference_exact",
+      "expected": 29.71822,
+      "observed": 29.71822,
+      "passed": true
+    },
+    {
+      "name": "d0_gt_2_mm.relative_difference_exact",
+      "expected": 0.007030367229262126,
+      "observed": 0.007030367229262126,
+      "passed": true
+    },
+    {
+      "name": "tracks_ge_5.weighted_events_exact",
+      "expected": 2830.631,
+      "observed": 2830.631,
+      "passed": true
+    },
+    {
+      "name": "tracks_ge_5.efficiency_pct_exact",
+      "expected": 29.92715,
+      "observed": 29.92715,
+      "passed": true
+    },
+    {
+      "name": "tracks_ge_5.authors_reference_exact",
+      "expected": 29.71822,
+      "observed": 29.71822,
+      "passed": true
+    },
+    {
+      "name": "tracks_ge_5.relative_difference_exact",
+      "expected": 0.007030367229262126,
+      "observed": 0.007030367229262126,
+      "passed": true
+    },
+    {
+      "name": "mdv_gt_10_gev.weighted_events_exact",
+      "expected": 2830.631,
+      "observed": 2830.631,
+      "passed": true
+    },
+    {
+      "name": "mdv_gt_10_gev.efficiency_pct_exact",
+      "expected": 29.92715,
+      "observed": 29.92715,
+      "passed": true
+    },
+    {
+      "name": "mdv_gt_10_gev.authors_reference_exact",
+      "expected": 29.71822,
+      "observed": 29.71822,
+      "passed": true
+    },
+    {
+      "name": "mdv_gt_10_gev.relative_difference_exact",
+      "expected": 0.007030367229262126,
+      "observed": 0.007030367229262126,
+      "passed": true
+    },
+    {
+      "name": "acceptance_x_efficiency.weighted_events_exact",
+      "expected": 2538.679,
+      "observed": 2538.679,
+      "passed": true
+    },
+    {
+      "name": "acceptance_x_efficiency.efficiency_pct_exact",
+      "expected": 26.84045,
+      "observed": 26.84045,
+      "passed": true
+    },
+    {
+      "name": "acceptance_x_efficiency.authors_reference_exact",
+      "expected": 26.60133,
+      "observed": 26.60133,
+      "passed": true
+    },
+    {
+      "name": "acceptance_x_efficiency.relative_difference_exact",
+      "expected": 0.008989024232998868,
+      "observed": 0.008989024232998868,
+      "passed": true
+    }
+  ],
+  "external_reference_validation": {
+    "status": "VALIDATED",
+    "scope": "High-pT strong-bm1 only",
+    "reference": "external/recastingCodes/DisplacedVertices/ATLAS-SUSY-2018-13_GCottin/recast_code/2_results/strong/gluino_run01.txt",
+    "uncertainty_status": {
+      "our_reproduction": {
+        "status": "INSUFFICIENT_WEIGHT_MOMENTS",
+        "estimator": "No weighted sum of squares or event-level weights are archived; binomial errors are not used.",
+        "source_reported_percent": {
+          "jet_selection": 0.036,
+          "r_vertex_gt_4_mm": 0.47,
+          "acceptance_x_efficiency": 0.446
+        }
+      },
+      "authors_recast": {
+        "status": "NOT_AVAILABLE"
+      }
+    },
+    "note": "The historical engineering tolerance is a triage criterion. No pull is claimed because weighted sum-of-squares and author uncertainties are unavailable.",
+    "translations": {
+      "es": {
+        "scope": "solo strong-bm1 High-pT",
+        "reference": "external/recastingCodes/DisplacedVertices/ATLAS-SUSY-2018-13_GCottin/recast_code/2_results/strong/gluino_run01.txt",
+        "note": "La tolerancia hist\u00f3rica de ingenier\u00eda es un criterio de triaje. No se calcula un pull porque faltan la suma de pesos al cuadrado y las incertidumbres de los autores."
+      }
+    }
+  },
+  "capability_consistency": {
+    "events_file_present": false,
+    "atomic_event_cuts": false,
+    "jet_what_if": false
+  }
+}

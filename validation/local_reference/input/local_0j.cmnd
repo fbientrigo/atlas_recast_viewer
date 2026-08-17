@@ -1,0 +1,41 @@
+! Local teaching sample: reconstructed strong-bm1 point, 0-parton slice only.
+Main:numberOfEvents = 500
+Main:timesAllowErrors = 3
+
+Init:showChangedSettings = on
+Init:showChangedParticleData = off
+Next:numberCount = 500
+Next:numberShowInfo = 0
+Next:numberShowProcess = 0
+Next:numberShowEvent = 0
+
+Merging:doKTMerging = on
+Merging:ktType = 1
+Merging:TMS = 500
+Merging:Process = pp>{go,1000021}{go,1000021}
+Merging:nJetMax = 0
+Merging:mayRemoveDecayProducts = on
+
+PartonLevel:MPI = off
+PartonLevel:ISR = on
+PartonLevel:FSR = on
+HadronLevel:Hadronize = on
+Tune:pp = 21
+
+Random:setSeed = on
+Random:seed = 424202
+
+! The MG5 LHE writer preserves the reconstructed RPV branching fractions but
+! rewrites the tiny neutralino width to zero. Restore the intended 0.01 ns
+! proper lifetime explicitly in Pythia: c * 0.01 ns = 2.99792458 mm.
+1000022:mayDecay = on
+1000022:tau0 = 2.99792458
+1000022:oneChannel = 1 0.25 0 2 1 3
+1000022:addChannel = 1 0.25 0 4 1 3
+1000022:addChannel = 1 0.25 0 -2 -1 -3
+1000022:addChannel = 1 0.25 0 -4 -1 -3
+
+Beams:frameType = 4
+LHEFInputs:nSubruns = 1
+Main:subrun = 0
+Beams:LHEF = strong_bm1_reconstructed_0j_500_width_fixed.lhe.gz
