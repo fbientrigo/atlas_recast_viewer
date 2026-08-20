@@ -245,95 +245,158 @@ def validate_dataset(
 
 
 def validate_events(
-    events_doc: dict[str, Any], manifest: dict[str, Any], cuts_doc: dict[str, Any]
+    events_doc: dict[str, Any],
+    manifest: dict[str, Any],
+    cuts_doc: dict[str, Any],
+    *,
+    expected_count: int | None = None,
+    file_name: str = "events.json",
 ) -> None:
-    """Validate the optional event pack without coercing missing values."""
+    """Validate an event pack without coercing missing values.
+
+    ``expected_count`` defaults to ``manifest.n_events`` (the primary
+    events.json convention). A supplementary geometry pack (a different file,
+    a different, typically smaller, curated event count) passes its own
+    ``manifest.geometry_pack.event_count`` and ``file_name="geometry_events.json"``
+    instead; the array-shape rules below are otherwise identical.
+    """
 
     dataset_id = manifest["dataset_id"]
+    if expected_count is None:
+        expected_count = manifest.get("n_events")
     if events_doc.get("schema_version") != SCHEMA_VERSION:
         raise DatasetValidationError(
-            f"dataset={dataset_id} file=events.json field=schema_version "
+            f"dataset={dataset_id} file={file_name} field=schema_version "
             f"expected={SCHEMA_VERSION} received={events_doc.get('schema_version')!r}"
         )
     if events_doc.get("dataset_id") != dataset_id:
         raise DatasetValidationError(
-            f"dataset={dataset_id} file=events.json field=dataset_id "
+            f"dataset={dataset_id} file={file_name} field=dataset_id "
             f"expected={dataset_id!r} received={events_doc.get('dataset_id')!r}"
         )
     events = events_doc.get("events")
     if not isinstance(events, list) or not events:
         raise DatasetValidationError(
-            f"dataset={dataset_id} file=events.json field=events expected=non-empty-array "
+            f"dataset={dataset_id} file={file_name} field=events expected=non-empty-array "
             f"received={type(events).__name__}"
         )
-    if manifest.get("n_events") != len(events):
+    if expected_count != len(events):
         raise DatasetValidationError(
-            f"dataset={dataset_id} file=events.json field=events.length "
-            f"expected={manifest.get('n_events')!r} received={len(events)}"
+            f"dataset={dataset_id} file={file_name} field=events.length "
+            f"expected={expected_count!r} received={len(events)}"
         )
-    required_vertex_cuts = {
-        cut["id"] for cut in cuts_doc["cuts"]
+    capabilities = manifest["capabilities"]
+    if not capabilities.get("atomic_event_cuts"):
+        raise DatasetValidationError(
+            f"dataset={dataset_id} field=capabilities.atomic_event_cuts "
+            "expected=true received=false (events.json requires atomic event cuts)"
+        )
+    if not (capabilities.get("jet_observables") or capabilities.get("dv_radial") or capabilities.get("dv_xyz")):
+        raise DatasetValidationError(
+            f"dataset={dataset_id} field=capabilities expected=at-least-one-of("
+            "jet_observables,dv_radial,dv_xyz) received=none (events.json would serialize nothing inspectable)"
+        )
+    # A boolean cut normally lives per-vertex (the frontend ORs across
+    # vertices to get the event verdict). A source that only ever computed a
+    # jet-blind event-level OR internally (no per-vertex breakdown was ever
+    # serialized) may instead declare `predicate_scope: "event"` on the cut,
+    # which moves that boolean into `event.predicates` directly. Absence of
+    # the field means "vertex", matching every dataset written before this
+    # field existed.
+    boolean_cuts = [
+        cut for cut in cuts_doc["cuts"]
         if cut["kind"] in {"atomic_boolean", "compound_boolean"} and cut["id"] != "jet_selection"
-    }
+    ]
+    event_scope_cut_ids = {cut["id"] for cut in boolean_cuts if cut.get("predicate_scope") == "event"}
+    required_vertex_cuts = {cut["id"] for cut in boolean_cuts if cut["id"] not in event_scope_cut_ids}
+    has_geometry = bool(capabilities.get("dv_radial") or capabilities.get("dv_xyz"))
     seen_ids: set[int] = set()
     for index, event in enumerate(events):
         where = f"events[{index}]"
         if not isinstance(event, dict):
             raise DatasetValidationError(
-                f"dataset={dataset_id} file=events.json field={where} expected=object received={type(event).__name__}"
+                f"dataset={dataset_id} file={file_name} field={where} expected=object received={type(event).__name__}"
             )
         event_id = event.get("event_id")
         if not isinstance(event_id, int) or event_id in seen_ids:
             raise DatasetValidationError(
-                f"dataset={dataset_id} file=events.json field={where}.event_id expected=unique-integer received={event_id!r}"
+                f"dataset={dataset_id} file={file_name} field={where}.event_id expected=unique-integer received={event_id!r}"
             )
         seen_ids.add(event_id)
         weight = event.get("weight")
         if not isinstance(weight, (int, float)) or not math.isfinite(weight) or weight < 0:
             raise DatasetValidationError(
-                f"dataset={dataset_id} file=events.json field={where}.weight expected=non-negative-finite-number received={weight!r}"
+                f"dataset={dataset_id} file={file_name} field={where}.weight expected=non-negative-finite-number received={weight!r}"
             )
         if not isinstance(event.get("valid_weight"), bool):
             raise DatasetValidationError(
-                f"dataset={dataset_id} file=events.json field={where}.valid_weight expected=boolean received={event.get('valid_weight')!r}"
+                f"dataset={dataset_id} file={file_name} field={where}.valid_weight expected=boolean received={event.get('valid_weight')!r}"
             )
         predicates = event.get("predicates")
         if not isinstance(predicates, dict) or not isinstance(predicates.get("jet_selection"), bool):
             raise DatasetValidationError(
-                f"dataset={dataset_id} file=events.json field={where}.predicates.jet_selection expected=boolean received=missing-or-invalid"
+                f"dataset={dataset_id} file={file_name} field={where}.predicates.jet_selection expected=boolean received=missing-or-invalid"
             )
+        for cut_id in event_scope_cut_ids:
+            if not isinstance(predicates.get(cut_id), bool):
+                raise DatasetValidationError(
+                    f"dataset={dataset_id} file={file_name} field={where}.predicates.{cut_id} "
+                    f"expected=boolean received={predicates.get(cut_id)!r}"
+                )
         jets = event.get("jets")
         if not isinstance(jets, list):
             raise DatasetValidationError(
-                f"dataset={dataset_id} file=events.json field={where}.jets expected=array received={type(jets).__name__}"
+                f"dataset={dataset_id} file={file_name} field={where}.jets expected=array received={type(jets).__name__}"
             )
         for jet_index, jet in enumerate(jets):
             if not isinstance(jet, dict):
                 raise DatasetValidationError(
-                    f"dataset={dataset_id} file=events.json field={where}.jets[{jet_index}] expected=object received={type(jet).__name__}"
+                    f"dataset={dataset_id} file={file_name} field={where}.jets[{jet_index}] expected=object received={type(jet).__name__}"
                 )
-            for field in ("rank", "pt_GeV", "eta", "phi"):
+            for field in ("rank", "pt_GeV"):
                 value = jet.get(field)
                 if not isinstance(value, (int, float)) or not math.isfinite(value):
                     raise DatasetValidationError(
-                        f"dataset={dataset_id} file=events.json field={where}.jets[{jet_index}].{field} expected=finite-number received={value!r}"
+                        f"dataset={dataset_id} file={file_name} field={where}.jets[{jet_index}].{field} expected=finite-number received={value!r}"
+                    )
+            # eta/phi are nullable: some sources serialize jet pT without a
+            # reconstructed direction. A jet with unknown direction is never
+            # fabricated a position; the frontend renders it as unavailable
+            # rather than placing it in 3D. See DATA_CONTRACT.md.
+            for field in ("eta", "phi"):
+                value = jet.get(field)
+                if value is not None and (not isinstance(value, (int, float)) or not math.isfinite(value)):
+                    raise DatasetValidationError(
+                        f"dataset={dataset_id} file={file_name} field={where}.jets[{jet_index}].{field} expected=finite-number-or-null received={value!r}"
                     )
         vertices = event.get("vertices")
         if not isinstance(vertices, list):
             raise DatasetValidationError(
-                f"dataset={dataset_id} file=events.json field={where}.vertices expected=array received={type(vertices).__name__}"
+                f"dataset={dataset_id} file={file_name} field={where}.vertices expected=array received={type(vertices).__name__}"
             )
+        if not has_geometry:
+            # No vertex coordinates exist in the source at all (dv_radial and
+            # dv_xyz are both false): a per-vertex geometric object cannot be
+            # validated without fabricating positions. DV predicates for such
+            # a dataset must be declared `predicate_scope: "event"` instead.
+            if vertices:
+                raise DatasetValidationError(
+                    f"dataset={dataset_id} file={file_name} field={where}.vertices "
+                    "expected=empty (capabilities.dv_radial and capabilities.dv_xyz are both false) "
+                    f"received=non-empty(len={len(vertices)})"
+                )
+            continue
         for vertex_index, vertex in enumerate(vertices):
             vertex_where = f"{where}.vertices[{vertex_index}]"
             if not isinstance(vertex, dict):
                 raise DatasetValidationError(
-                    f"dataset={dataset_id} file=events.json field={vertex_where} expected=object received={type(vertex).__name__}"
+                    f"dataset={dataset_id} file={file_name} field={vertex_where} expected=object received={type(vertex).__name__}"
                 )
             for field in ("x_mm", "y_mm", "z_mm", "r_mm", "mass_GeV", "vertex_eff"):
                 value = vertex.get(field)
                 if not isinstance(value, (int, float)) or not math.isfinite(value):
                     raise DatasetValidationError(
-                        f"dataset={dataset_id} file=events.json field={vertex_where}.{field} expected=finite-number received={value!r}"
+                        f"dataset={dataset_id} file={file_name} field={vertex_where}.{field} expected=finite-number received={value!r}"
                     )
             llp_momentum = vertex.get("llp_momentum_GeV")
             if not isinstance(llp_momentum, dict) or any(
@@ -342,28 +405,35 @@ def validate_events(
                 for component in ("px", "py", "pz")
             ):
                 raise DatasetValidationError(
-                    f"dataset={dataset_id} file=events.json field={vertex_where}.llp_momentum_GeV "
+                    f"dataset={dataset_id} file={file_name} field={vertex_where}.llp_momentum_GeV "
                     "expected=finite-px-py-pz received=missing-or-invalid"
                 )
             expected_r = math.hypot(vertex["x_mm"], vertex["y_mm"])
             if not math.isclose(vertex["r_mm"], expected_r, rel_tol=1e-12, abs_tol=1e-12):
                 raise DatasetValidationError(
-                    f"dataset={dataset_id} file=events.json field={vertex_where}.r_mm expected=hypot(x_mm,y_mm) received={vertex['r_mm']!r}"
+                    f"dataset={dataset_id} file={file_name} field={vertex_where}.r_mm expected=hypot(x_mm,y_mm) received={vertex['r_mm']!r}"
                 )
+            # A vertex must carry at least every predicate_scope="vertex" cut.
+            # It may additionally carry a genuine per-vertex breakdown for a
+            # cut declared predicate_scope="event" at the dataset level, when
+            # this specific event pack (e.g. a curated geometry replay) did
+            # compute one — informational detail, never used for the
+            # frontend's event-vs-vertex cut-scope routing (see
+            # DATA_CONTRACT.md).
             vertex_predicates = vertex.get("predicates")
-            if not isinstance(vertex_predicates, dict) or set(vertex_predicates) != required_vertex_cuts:
+            if not isinstance(vertex_predicates, dict) or not required_vertex_cuts.issubset(vertex_predicates):
                 raise DatasetValidationError(
-                    f"dataset={dataset_id} file=events.json field={vertex_where}.predicates "
-                    f"expected=keys({sorted(required_vertex_cuts)}) received={sorted(vertex_predicates) if isinstance(vertex_predicates, dict) else type(vertex_predicates).__name__}"
+                    f"dataset={dataset_id} file={file_name} field={vertex_where}.predicates "
+                    f"expected=keys(at-least {sorted(required_vertex_cuts)}) received={sorted(vertex_predicates) if isinstance(vertex_predicates, dict) else type(vertex_predicates).__name__}"
                 )
             if any(not isinstance(value, bool) for value in vertex_predicates.values()):
                 raise DatasetValidationError(
-                    f"dataset={dataset_id} file=events.json field={vertex_where}.predicates.* expected=boolean received=non-boolean"
+                    f"dataset={dataset_id} file={file_name} field={vertex_where}.predicates.* expected=boolean received=non-boolean"
                 )
             tracks = vertex.get("tracks")
             if not isinstance(tracks, list):
                 raise DatasetValidationError(
-                    f"dataset={dataset_id} file=events.json field={vertex_where}.tracks expected=array received={type(tracks).__name__}"
+                    f"dataset={dataset_id} file={file_name} field={vertex_where}.tracks expected=array received={type(tracks).__name__}"
                 )
             selected_tracks = 0
             impacted_tracks = 0
@@ -371,7 +441,7 @@ def validate_events(
                 track_where = f"{vertex_where}.tracks[{track_index}]"
                 if not isinstance(track, dict):
                     raise DatasetValidationError(
-                        f"dataset={dataset_id} file=events.json field={track_where} expected=object received={type(track).__name__}"
+                        f"dataset={dataset_id} file={file_name} field={track_where} expected=object received={type(track).__name__}"
                     )
                 for field in (
                     "track_index", "pdg_id", "charge", "x_prod_mm", "y_prod_mm", "z_prod_mm",
@@ -380,12 +450,12 @@ def validate_events(
                     value = track.get(field)
                     if not isinstance(value, (int, float)) or not math.isfinite(value):
                         raise DatasetValidationError(
-                            f"dataset={dataset_id} file=events.json field={track_where}.{field} expected=finite-number received={value!r}"
+                            f"dataset={dataset_id} file={file_name} field={track_where}.{field} expected=finite-number received={value!r}"
                         )
                 for field in ("passes_d0", "selected_for_dv"):
                     if not isinstance(track.get(field), bool):
                         raise DatasetValidationError(
-                            f"dataset={dataset_id} file=events.json field={track_where}.{field} expected=boolean received={track.get(field)!r}"
+                            f"dataset={dataset_id} file={file_name} field={track_where}.{field} expected=boolean received={track.get(field)!r}"
                         )
                 phi = math.atan2(track["py_GeV"], track["px_GeV"])
                 phi_prod = math.atan2(track["y_prod_mm"], track["x_prod_mm"])
@@ -395,17 +465,12 @@ def validate_events(
                 expected_d0 = math.hypot(track["x_prod_mm"], track["y_prod_mm"]) * math.sin(delta_phi)
                 if not math.isclose(track["d0_mm"], expected_d0, rel_tol=1e-12, abs_tol=1e-12):
                     raise DatasetValidationError(
-                        f"dataset={dataset_id} file=events.json field={track_where}.d0_mm expected=recast-proxy received={track['d0_mm']!r}"
+                        f"dataset={dataset_id} file={file_name} field={track_where}.d0_mm expected=recast-proxy received={track['d0_mm']!r}"
                     )
                 selected_tracks += int(track["selected_for_dv"])
                 impacted_tracks += int(track["passes_d0"])
             if selected_tracks != vertex.get("selected_track_count") or impacted_tracks != vertex.get("impacted_track_count"):
                 raise DatasetValidationError(
-                    f"dataset={dataset_id} file=events.json field={vertex_where}.tracks expected=count-consistency "
+                    f"dataset={dataset_id} file={file_name} field={vertex_where}.tracks expected=count-consistency "
                     f"received=selected:{selected_tracks},impacted:{impacted_tracks}"
                 )
-    capabilities = manifest["capabilities"]
-    if not all(capabilities[name] for name in ("atomic_event_cuts", "jet_observables", "dv_radial", "dv_xyz")):
-        raise DatasetValidationError(
-            f"dataset={dataset_id} file=manifest.json field=capabilities expected=event-pack-capabilities received=incomplete"
-        )

@@ -1,10 +1,11 @@
 <script lang="ts">
-  import type { Capabilities, CutDefinition, DetectorGeometry, EventRecord, EventTrack, EventVertex } from '../data/schema';
+  import type { Capabilities, CutDefinition, DetectorGeometry, EventRecord, EventTrack, EventVertex, JetLogic } from '../data/schema';
   import type { Language } from '../i18n';
   import { t } from '../i18n';
   import { borderlineDefinition, cohortEvents, deterministicPage, type CohortId } from '../core/cohorts';
   import { transverseClosestApproach } from '../core/geometry';
   import { radialTickValues, resolveInspectionTarget, targetKey, type InspectionTarget } from '../core/inspection';
+  import type { JetScaleContext } from '../core/selection';
   import ThreeEventScene from './ThreeEventScene.svelte';
   import ObjectInspector from './ObjectInspector.svelte';
 
@@ -15,6 +16,10 @@
   export let detectorGeometry: DetectorGeometry | null = null;
   export let disabledCuts: Set<string>;
   export let language: Language;
+  export let jetLogic: JetLogic | undefined = undefined;
+  export let jetScale = 1;
+
+  $: jetScaleContext = { jetLogic, scale: jetScale } as JetScaleContext;
 
   let cohort: CohortId = 'fails_selected';
   let displayCount = 10;
@@ -42,7 +47,7 @@
   $: borderline = borderlineDefinition(cut);
   $: if (cohort === 'borderline' && !borderline) cohort = 'fails_selected';
   $: if (!selectedCutIsBoolean && ['passes_selected', 'fails_selected', 'borderline'].includes(cohort)) cohort = 'all';
-  $: candidates = events ? cohortEvents(events, cohort, cut, enabledCutIds) : [];
+  $: candidates = events ? cohortEvents(events, cohort, cut, enabledCutIds, cuts, jetScaleContext) : [];
   $: displayedEvents = deterministicPage(candidates, displayCount, page);
   $: if (cut.id !== previousCutId || cohort !== previousCohort || displayCount !== previousCount) {
     previousCutId = cut.id; previousCohort = cohort; previousCount = displayCount; page = 0;
@@ -226,7 +231,7 @@
         <div class="ruler"><span>0</span><i></i><span>{hardware.at(-1)?.radius_mm ?? fiducialRMaxMm ?? 300} mm</span></div>
       </article>
 
-      <ObjectInspector {inspected} {cut} {cuts} {disabledCuts} {language} />
+      <ObjectInspector {inspected} {cut} {cuts} {disabledCuts} {language} {jetLogic} {jetScale} />
     </div>
   {:else}
     <div class="inline-unavailable"><strong>{t(language, 'eventPointsUnavailable')}</strong> {t(language, 'eventPointsReason')}</div>

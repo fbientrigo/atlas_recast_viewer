@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import geometryJson from '../../../public/data/detector_geometry.json';
-import type { CutDefinition, DetectorGeometry, EventRecord } from '../data/schema';
+import type { DetectorGeometry, EventRecord, JetLogic } from '../data/schema';
 import {
   jetBranchPasses,
   radialTickValues,
@@ -15,7 +15,7 @@ const event = {
   jets: [{ rank: 4, pt_GeV: 251, eta: 0.2, phi: 1 }],
   vertices: [{ tracks: [{ charge: -1, px_GeV: 3, py_GeV: 4 }] }],
 } as EventRecord;
-const cut = { parameters: { highpt_j4_pt_GeV: 250 } } as unknown as CutDefinition;
+const jetLogic = { branches: [{ jet_rank: 4, threshold_GeV: 250, comparison: '>' }] } as unknown as JetLogic;
 
 describe('linked physics inspection', () => {
   it('resolves only real canonical objects', () => {
@@ -27,8 +27,13 @@ describe('linked physics inspection', () => {
   });
 
   it('keeps the jet OR branch threshold explicit', () => {
-    expect(jetBranchPasses(cut, event.jets[0])).toBe(true);
-    expect(jetBranchPasses(cut, { ...event.jets[0], rank: 3 })).toBeNull();
+    expect(jetBranchPasses(jetLogic, event.jets[0])).toBe(true);
+    expect(jetBranchPasses(jetLogic, { ...event.jets[0], rank: 3 })).toBeNull();
+  });
+
+  it('rescales the branch threshold by the diagnostic scale s', () => {
+    expect(jetBranchPasses(jetLogic, { ...event.jets[0], pt_GeV: 130 }, 0.5)).toBe(true);
+    expect(jetBranchPasses(jetLogic, { ...event.jets[0], pt_GeV: 100 }, 0.5)).toBe(false);
   });
 
   it('derives track pT/|q| without coercing a neutral charge', () => {

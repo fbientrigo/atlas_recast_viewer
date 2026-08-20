@@ -31,6 +31,18 @@ the aggregate `reference` dataset only `cutflow` is true. In particular,
 `response_weights=false` means that per-event response values are absent even
 though the final aggregate A×efficiency is present.
 
+An optional `manifest.sample` object carries scientific-campaign identity that
+the frontend must not infer from `dataset_id` strings: `family`, `mass_GeV`,
+`analysis_region`, `decay_mode`, `ctau_response_mm`, `lifetime_mode`. When a
+source's authoritative statistics population (e.g. a full campaign) is larger
+than what `events.json` serializes for display, `manifest.n_events` describes
+only the displayed subsample — matching the pre-existing convention where
+`n_events` means "events.json length," not "events generated" — and
+`event_count_semantics.full_campaign_events` records the true statistics-scope
+count. `summary.json`'s cutflow always uses the full statistics scope; the UI
+must disclose the two scopes whenever they differ (see `AcceptanceStrip`'s
+scope note).
+
 ## Cuts
 
 `cuts.json.cuts[]` is strictly ordered and contains:
@@ -48,6 +60,35 @@ parameters              numeric source values used by diagnostics/rendering
 presented as an ordinary hard cut. Optional `jet_logic` metadata carries rank
 indexing, missing-jet semantics, and thresholds so the UI has no physics
 constants.
+
+A boolean cut's predicate normally lives per vertex (`vertices[].predicates`);
+the event verdict is an OR across vertices. A cut may instead declare
+`predicate_scope: "event"` when its source only ever computed a jet-blind
+event-level OR internally and never serialized a per-vertex breakdown — the
+boolean then lives directly in `events[].predicates` under the cut's id.
+Absence of the field means `"vertex"`, matching every dataset written before
+this field existed. A dataset that uses `predicate_scope: "event"` for every
+non-jet boolean cut may leave `vertices: []` on every event; `dv_radial` and
+`dv_xyz` stay `false` in that case (see capabilities below).
+
+`jet_logic` may additionally declare, generically and optionally:
+
+```text
+additional_requirement.supported     boolean
+additional_requirement.predicate_id  name of the event-level boolean in events[].predicates
+additional_requirement.scales_with_s boolean (always false for every dataset seen so far)
+threshold_scale.supported            boolean — the ONLY thing that enables the `s` UI control
+threshold_scale.baseline             the s value that reproduces the stored baseline predicate
+threshold_scale.values               discrete, validated s grid (never assumed by the frontend)
+```
+
+When `threshold_scale.supported` is true, `jet_selection` may be recomputed at
+any declared `s` from `events[].jets[].pt_GeV` and these branch thresholds
+(`core/selection.ts::jetSelectionPasses`); `s` rescales only the ordinary
+ranked-jet branches, never `additional_requirement`. Absence of
+`threshold_scale` (or `supported: false`) means the frontend always uses the
+stored baseline `predicates.jet_selection` — this is the case for every
+High-pT dataset.
 
 `unit_conventions` fixes energy to GeV, length to mm, and angles to radians.
 Any adapter conversion must be listed; the reference adapter performs none.
@@ -104,6 +145,22 @@ tracks[]: track_index, pdg_id, charge, x_prod_mm, y_prod_mm, z_prod_mm,
           passes_d0, selected_for_dv
 ```
 
+`jets[].eta` and `jets[].phi` are nullable: a source that serialized jet pT
+without a reconstructed direction (no eta/phi ever computed, or computed
+internally but never written out) reports `null` rather than a fabricated
+angle. `GeometryViewer`/`ObjectInspector` render such a jet without 3D
+placement and show `—` for direction, the same "missing identity resolves to
+unavailable, never fabricated" rule already applied to disabled-cut
+counterfactuals.
+
+`events.json` may exist with `capabilities.dv_radial` and `capabilities.dv_xyz`
+both `false`, provided at least one of `jet_observables`/`dv_radial`/`dv_xyz`
+is `true` and `atomic_event_cuts` is `true`. In that case every event's
+`vertices` array must be empty — no vertex object is serialized without real
+coordinates — and any DV-style boolean cut must be `predicate_scope: "event"`.
+This lets a jet-only source (real pT, no geometry) support cutflow, atomic
+cut disabling, and jet inspection honestly, without a 3D/R–z/x–y scene.
+
 DV predicates live per vertex. An event passes the enabled DV selection only
 if one vertex satisfies every enabled predicate; booleans from different
 vertices must never be combined. Disabling a cut removes that predicate before
@@ -120,6 +177,59 @@ Every modified result must carry the persistent label:
 ```text
 DIAGNOSTIC COUNTERFACTUAL — NOT THE PUBLISHED/REFERENCE ANALYSIS
 ```
+
+## Optional geometry pack
+
+A source whose primary `events.json` has no per-vertex coordinates (e.g. the
+H2 mass-control campaign, Step 1) may still recover real geometry for a small,
+deterministically curated subset of events via telemetry replay of the frozen
+source (see `docs/H2_GEOMETRY_REPLAY_CONTRACT.md`). When it does, the dataset
+directory gains a sibling file:
+
+```text
+public/data/<dataset_id>/geometry_events.json   # same EventsDocument shape as events.json
+```
+
+and `manifest.json` gains an optional block whose mere presence signals the
+file exists:
+
+```json
+"geometry_pack": {
+  "event_count": 100,
+  "selection_method": "curated_pedagogical_cohorts",
+  "replay_mode": "B",
+  "cohort_summary": {"accepted_baseline": 20, "fail_jet_selection_s1": 15, "...": "..."}
+}
+```
+
+`geometry_events.json` is validated with the same `validate_events`/
+`validateEventsDocument` function used for `events.json`, against its own
+`geometry_pack.event_count` (not `manifest.n_events`) and its own file name,
+with `dv_radial`/`dv_xyz` overridden to `true` for that call only — the
+on-disk `capabilities.dv_radial`/`dv_xyz` keep describing `events.json`
+honestly (still `false` when it has no geometry). The frontend performs the
+same override when routing which array feeds `GeometryViewer`
+(`App.svelte`'s `geometryPanelEvents`/`geometryPanelCapabilities`); the
+component itself is unmodified and never branches on `source_kind`.
+
+A vertex inside a geometry pack may carry a genuine per-vertex boolean
+breakdown for a cut declared `predicate_scope: "event"` at the dataset level
+(this specific pack computed one, even though the primary statistics
+population never serialized a per-vertex breakdown). `vertex.predicates` is
+therefore validated as "at least every predicate_scope=vertex cut", not an
+exact-key match; `event.predicates` remains the sole authority for cut-scope
+routing everywhere else.
+
+The curated 100 events are a **deterministic pedagogical/coverage sample**
+stratified into cohorts (accepted baseline, first-failure-per-cut,
+jet-threshold-borderline, `s`-sensitive, coverage-extreme) — never an
+unbiased estimator of acceptance. `summary.json`'s cutflow and every
+acceptance number always come from the full statistics-scope population; the
+UI discloses the geometry pack's count separately (`AcceptanceStrip`'s
+`geometryPackCount` note) and never substitutes it into a denominator. The
+same 100 events are reused as the diagnostic threshold scale `s` changes:
+`s` only reclassifies (`jet_selection` boolean), it never reruns replay or
+alters any stored coordinate.
 
 ## Simplified event and detector geometry
 

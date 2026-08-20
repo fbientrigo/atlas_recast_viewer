@@ -1,11 +1,11 @@
 import type {
-  CutDefinition,
   DetectorGeometry,
   EventJet,
   EventRecord,
   EventTrack,
   EventVertex,
   GeometryLandmark,
+  JetLogic,
 } from '../data/schema';
 
 export type InspectionTarget =
@@ -43,13 +43,19 @@ export function resolveInspectionTarget(
   return track ? { kind: 'track', event, vertex, vertexIndex: target.vertexIndex, track, trackIndex: target.trackIndex } : null;
 }
 
-export function jetThresholdGeV(cut: CutDefinition, rank: number): number | null {
-  const value = cut.parameters?.[`highpt_j${rank}_pt_GeV`];
-  return typeof value === 'number' ? value : null;
+/**
+ * Effective threshold for a jet rank, at diagnostic scale `s` (baseline 1.0
+ * for datasets without threshold_scale). Thresholds always come from
+ * jet_logic.branches — never a hardcoded constant or a source-specific
+ * parameter-name convention.
+ */
+export function jetThresholdGeV(jetLogic: JetLogic | undefined, rank: number, scale = 1): number | null {
+  const branch = jetLogic?.branches.find((candidate) => candidate.jet_rank === rank);
+  return branch ? branch.threshold_GeV * scale : null;
 }
 
-export function jetBranchPasses(cut: CutDefinition, jet: EventJet): boolean | null {
-  const threshold = jetThresholdGeV(cut, jet.rank);
+export function jetBranchPasses(jetLogic: JetLogic | undefined, jet: EventJet, scale = 1): boolean | null {
+  const threshold = jetThresholdGeV(jetLogic, jet.rank, scale);
   return threshold === null ? null : jet.pt_GeV > threshold;
 }
 

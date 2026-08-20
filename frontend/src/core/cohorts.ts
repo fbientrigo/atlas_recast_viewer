@@ -1,13 +1,20 @@
 import type { CutDefinition, EventRecord, EventVertex } from '../data/schema';
-import { eventPassesCuts } from './selection';
+import { eventPassesCuts, jetSelectionPasses, type JetScaleContext } from './selection';
 
 export type CohortId = 'all' | 'accepted' | 'passes_selected' | 'fails_selected' | 'borderline';
 
 export interface BorderlineDefinition { window: { es: string; en: string }; matches: (event: EventRecord) => boolean }
 
-export function eventPassesSelectedCut(event: EventRecord, cut: CutDefinition): boolean {
+export function eventPassesSelectedCut(event: EventRecord, cut: CutDefinition, jetScale?: JetScaleContext): boolean {
   if (cut.kind === 'response_weight' || cut.kind === 'summary') return false;
-  if (cut.id === 'jet_selection') return event.predicates.jet_selection;
+  if (cut.id === 'jet_selection') {
+    return jetScale ? jetSelectionPasses(event, jetScale.jetLogic, jetScale.scale) : event.predicates.jet_selection;
+  }
+  if (cut.predicate_scope === 'event') {
+    const value = event.predicates[cut.id];
+    if (value === undefined) throw new Error(`missing event-scoped predicate: ${cut.id}`);
+    return value;
+  }
   return event.vertices.some((vertex) => vertex.predicates[cut.id] === true);
 }
 
@@ -36,13 +43,15 @@ export function cohortEvents(
   cohort: CohortId,
   selectedCut: CutDefinition,
   enabledCutIds: string[],
+  cuts: CutDefinition[] = [],
+  jetScale?: JetScaleContext,
 ): EventRecord[] {
   const borderline = borderlineDefinition(selectedCut);
   return [...events].sort((a, b) => a.event_id - b.event_id).filter((event) => {
     if (cohort === 'all') return true;
-    if (cohort === 'accepted') return eventPassesCuts(event, enabledCutIds);
-    if (cohort === 'passes_selected') return eventPassesSelectedCut(event, selectedCut);
-    if (cohort === 'fails_selected') return !eventPassesSelectedCut(event, selectedCut);
+    if (cohort === 'accepted') return eventPassesCuts(event, enabledCutIds, cuts, jetScale);
+    if (cohort === 'passes_selected') return eventPassesSelectedCut(event, selectedCut, jetScale);
+    if (cohort === 'fails_selected') return !eventPassesSelectedCut(event, selectedCut, jetScale);
     return Boolean(borderline?.matches(event));
   });
 }
@@ -53,10 +62,15 @@ export function deterministicPage<T>(items: T[], count: number, page: number): T
   return Array.from({ length: Math.min(count, items.length) }, (_, index) => items[(start + index) % items.length]);
 }
 
-export function firstFailedCut(event: EventRecord, cuts: CutDefinition[], disabledCuts: Set<string>): string | null {
+export function firstFailedCut(
+  event: EventRecord,
+  cuts: CutDefinition[],
+  disabledCuts: Set<string>,
+  jetScale?: JetScaleContext,
+): string | null {
   for (const cut of cuts) {
     if (disabledCuts.has(cut.id) || cut.kind === 'response_weight' || cut.kind === 'summary') continue;
-    if (!eventPassesCuts(event, [cut.id])) return cut.id;
+    if (!eventPassesCuts(event, [cut.id], cuts, jetScale)) return cut.id;
   }
   return null;
 }

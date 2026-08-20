@@ -10,7 +10,7 @@
   import PopulationView from './components/PopulationView.svelte';
   import { loadDataset, loadDatasetCatalog, loadDetectorGeometry, type DatasetCatalogEntry, type LoadState } from './data/loader';
   import type { CutDefinition, CutflowStage, DetectorGeometry } from './data/schema';
-  import { booleanAcceptance, diagnosticAvailability, recomputeEventCutflow } from './core/selection';
+  import { booleanAcceptance, diagnosticAvailability, recomputeEventCutflow, thresholdScaleAvailability, type JetScaleContext } from './core/selection';
   import { t, validationText, type Language } from './i18n';
 
   let language: Language = 'es';
@@ -20,16 +20,25 @@
   let selectedCut: CutDefinition | null = null;
   let disabledCuts = new Set<string>();
   let detectorGeometry: DetectorGeometry | null = null;
+  // Diagnostic jet-threshold scale s. Never reset on dataset switch (Step
+  // 2D/3G): H2 mass -> H2 mass keeps s; switching to a dataset without
+  // threshold_scale support simply disables the control without touching
+  // this value, so returning to an H2 mass restores it.
+  let jetScale = 1;
 
   $: diagnostic = state.status === 'valid'
     ? diagnosticAvailability(state.dataset.manifest.capabilities, Boolean(state.dataset.events))
     : null;
   $: diagnosticReason = state.status === 'valid' && state.dataset.manifest.capabilities.atomic_event_cuts
     ? t(language, 'eventPackMissing') : t(language, 'aggregateReason');
+  $: jetLogic = state.status === 'valid' ? state.dataset.cuts.jet_logic : undefined;
+  $: scaleAvailability = thresholdScaleAvailability(jetLogic);
+  $: jetScaleContext = { jetLogic, scale: jetScale } as JetScaleContext;
+  $: scaleIsCounterfactual = scaleAvailability.available && jetScale !== jetLogic?.threshold_scale?.baseline;
   $: selectedIndex = state.status === 'valid' && selectedCut
     ? state.dataset.cuts.cuts.findIndex((cut) => cut.id === selectedCut?.id) : 0;
   $: interactiveFlow = state.status === 'valid' && state.dataset.events
-    ? recomputeEventCutflow(state.dataset.events.events, state.dataset.cuts.cuts, disabledCuts) : null;
+    ? recomputeEventCutflow(state.dataset.events.events, state.dataset.cuts.cuts, disabledCuts, jetScaleContext) : null;
   $: displayStages = state.status === 'valid'
     ? state.dataset.summary.cutflow.stages.map((stage, index): CutflowStage => {
         const recomputed = interactiveFlow?.find((candidate) => candidate.cutId === stage.cut_id);
@@ -44,7 +53,11 @@
         };
       }) : [];
   $: currentAcceptance = state.status === 'valid' && state.dataset.events
-    ? booleanAcceptance(state.dataset.events.events, state.dataset.cuts.cuts, disabledCuts).efficiencyPct : null;
+    ? booleanAcceptance(state.dataset.events.events, state.dataset.cuts.cuts, disabledCuts, jetScaleContext).efficiencyPct : null;
+
+  function selectScale(nextScale: number): void {
+    jetScale = nextScale;
+  }
 
   function toggleCut(cut: CutDefinition): void {
     if (!diagnostic?.available || cut.kind === 'response_weight') return;
@@ -84,7 +97,8 @@
 <svelte:head><title>{t(language, 'appTitle')}</title></svelte:head>
 
 <main>
-  <DatasetToolbar {catalog} {datasetId} {language} onDataset={selectDataset} onLanguage={selectLanguage} />
+  <DatasetToolbar {catalog} {datasetId} {language} onDataset={selectDataset} onLanguage={selectLanguage}
+    thresholdScale={jetLogic?.threshold_scale} scale={jetScale} onScale={selectScale} />
   {#if state.status === 'loading'}
     <div class="state-panel"><h1>{t(language, 'loading')}</h1><p>{t(language, 'validating')}</p></div>
   {:else if state.status !== 'valid'}
@@ -101,13 +115,22 @@
     </div>
   {:else}
     {@const dataset = state.dataset}
+    {@const geometryPanelEvents = dataset.geometryEvents?.events ?? dataset.events?.events}
+    {@const geometryPanelCapabilities = dataset.geometryEvents
+      ? { ...dataset.manifest.capabilities, dv_radial: true, dv_xyz: true }
+      : dataset.manifest.capabilities}
     <DatasetHeader manifest={dataset.manifest} {language} />
 
     {#if selectedCut}
       {@const selectedStage = displayStages[selectedIndex]}
-      <AcceptanceStrip summary={dataset.summary} {selectedCut} {selectedStage} {language} currentBooleanAcceptance={currentAcceptance} />
+      <AcceptanceStrip summary={dataset.summary} {selectedCut} {selectedStage} {language} currentBooleanAcceptance={currentAcceptance}
+        displayEventCount={dataset.events ? dataset.manifest.n_events : null}
+        statisticsEventCount={typeof dataset.manifest.event_count_semantics?.full_campaign_events === 'number'
+          ? dataset.manifest.event_count_semantics.full_campaign_events : (dataset.events ? dataset.manifest.n_events : null)}
+        geometryPackCount={dataset.manifest.geometry_pack?.event_count ?? null} />
 
       {#if disabledCuts.size > 0}<div class="diagnostic-banner">{t(language, 'diagnosticBanner')}</div>{/if}
+      {#if scaleIsCounterfactual}<div class="diagnostic-banner scale">{t(language, 'scaleDiagnosticBanner')}</div>{/if}
 
       <div class="explorer-grid">
         <section class="analysis-panel" aria-labelledby="analysis-flow">
@@ -131,7 +154,7 @@
           {#if selectedCut.id === 'jet_selection' && dataset.cuts.jet_logic}
             <details class="jet-details" open>
               <summary>{t(language, 'jetLogic')}</summary>
-              <JetExplorer logic={dataset.cuts.jet_logic} capabilities={dataset.manifest.capabilities} events={dataset.events?.events} {language} />
+              <JetExplorer logic={dataset.cuts.jet_logic} capabilities={dataset.manifest.capabilities} events={dataset.events?.events} {language} scale={jetScale} />
             </details>
           {/if}
 
@@ -146,7 +169,7 @@
         </section>
 
         <aside class="visual-panel" aria-label={t(language, 'geometryMode')}>
-          <GeometryViewer cut={selectedCut} cuts={dataset.cuts.cuts} capabilities={dataset.manifest.capabilities} events={dataset.events?.events} {detectorGeometry} {disabledCuts} {language} />
+          <GeometryViewer cut={selectedCut} cuts={dataset.cuts.cuts} capabilities={geometryPanelCapabilities} events={geometryPanelEvents} {detectorGeometry} {disabledCuts} {language} {jetLogic} {jetScale} />
           <PopulationView cut={selectedCut} stage={selectedStage} {language} eventLevel={Boolean(dataset.events)} />
         </aside>
       </div>

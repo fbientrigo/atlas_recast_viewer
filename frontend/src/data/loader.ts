@@ -41,6 +41,23 @@ export async function loadDataset(datasetId: string, fetcher: typeof fetch = fet
       const eventsValue = await fetchJson(fetcher, `${base}/events.json`, datasetId, 'events.json');
       dataset.events = validateEventsDocument(eventsValue, dataset);
     }
+    if (dataset.manifest.geometry_pack) {
+      const geometryValue = await fetchJson(fetcher, `${base}/geometry_events.json`, datasetId, 'geometry_events.json');
+      // geometry_events.json has real coordinates even when the primary
+      // events.json (and therefore dataset.manifest.capabilities) truthfully
+      // does not; validate it against a capabilities override, mirroring
+      // preprocess/geometry_replay.py's geometry_manifest override.
+      const geometryDatasetView: ViewerDataset = {
+        ...dataset,
+        manifest: { ...dataset.manifest, capabilities: { ...dataset.manifest.capabilities, dv_radial: true, dv_xyz: true } },
+      };
+      dataset.geometryEvents = validateEventsDocument(
+        geometryValue,
+        geometryDatasetView,
+        dataset.manifest.geometry_pack.event_count,
+        'geometry_events.json',
+      );
+    }
     return { status: 'valid', dataset };
   } catch (error) {
     const datasetError = error instanceof DatasetError

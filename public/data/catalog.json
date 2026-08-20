@@ -20,5 +20,93 @@
       "es": "Validación inclusiva strong-bm1 0j+1j+2j; cutflow exacto, sin eventos serializados.",
       "en": "Inclusive strong-bm1 0j+1j+2j validation; exact cutflow, no serialized events."
     }
+  },
+  {
+    "dataset_id": "h2-m130",
+    "labels": {
+      "es": "H2 · 130 GeV",
+      "en": "H2 · 130 GeV"
+    },
+    "description": {
+      "es": "Control de masa H2 Trackless, m_H2=130 GeV, τ_response=4.326 mm fijo, H2→b b̄.",
+      "en": "H2 Trackless mass control, m_H2=130 GeV, fixed τ_response=4.326 mm, H2→b b̄."
+    }
+  },
+  {
+    "dataset_id": "h2-m150",
+    "labels": {
+      "es": "H2 · 150 GeV",
+      "en": "H2 · 150 GeV"
+    },
+    "description": {
+      "es": "Control de masa H2 Trackless, m_H2=150 GeV, τ_response=4.326 mm fijo, H2→b b̄.",
+      "en": "H2 Trackless mass control, m_H2=150 GeV, fixed τ_response=4.326 mm, H2→b b̄."
+    }
+  },
+  {
+    "dataset_id": "h2-m170",
+    "labels": {
+      "es": "H2 · 170 GeV",
+      "en": "H2 · 170 GeV"
+    },
+    "description": {
+      "es": "Control de masa H2 Trackless, m_H2=170 GeV, τ_response=4.326 mm fijo, H2→b b̄.",
+      "en": "H2 Trackless mass control, m_H2=170 GeV, fixed τ_response=4.326 mm, H2→b b̄."
+    }
+  },
+  {
+    "dataset_id": "h2-m200",
+    "labels": {
+      "es": "H2 · 200 GeV",
+      "en": "H2 · 200 GeV"
+    },
+    "description": {
+      "es": "Control de masa H2 Trackless, m_H2=200 GeV, τ_response=4.326 mm fijo, H2→b b̄.",
+      "en": "H2 Trackless mass control, m_H2=200 GeV, fixed τ_response=4.326 mm, H2→b b̄."
+    }
+  },
+  {
+    "dataset_id": "h2-m250",
+    "labels": {
+      "es": "H2 · 250 GeV",
+      "en": "H2 · 250 GeV"
+    },
+    "description": {
+      "es": "Control de masa H2 Trackless, m_H2=250 GeV, τ_response=4.326 mm fijo, H2→b b̄.",
+      "en": "H2 Trackless mass control, m_H2=250 GeV, fixed τ_response=4.326 mm, H2→b b̄."
+    }
+  },
+  {
+    "dataset_id": "h2-m300",
+    "labels": {
+      "es": "H2 · 300 GeV",
+      "en": "H2 · 300 GeV"
+    },
+    "description": {
+      "es": "Control de masa H2 Trackless, m_H2=300 GeV, τ_response=4.326 mm fijo, H2→b b̄.",
+      "en": "H2 Trackless mass control, m_H2=300 GeV, fixed τ_response=4.326 mm, H2→b b̄."
+    }
+  },
+  {
+    "dataset_id": "h2-m330",
+    "labels": {
+      "es": "H2 · 330 GeV",
+      "en": "H2 · 330 GeV"
+    },
+    "description": {
+      "es": "Control de masa H2 Trackless, m_H2=330 GeV, τ_response=4.326 mm fijo, H2→b b̄.",
+      "en": "H2 Trackless mass control, m_H2=330 GeV, fixed τ_response=4.326 mm, H2→b b̄."
+    }
+  },
+  {
+    "dataset_id": "h2-m345",
+    "labels": {
+      "es": "H2 · 345 GeV",
+      "en": "H2 · 345 GeV"
+    },
+    "description": {
+      "es": "Control de masa H2 Trackless, m_H2=345 GeV, τ_response=4.326 mm fijo, H2→b b̄.",
+      "en": "H2 Trackless mass control, m_H2=345 GeV, fixed τ_response=4.326 mm, H2→b b̄."
+    }
   }
 ]

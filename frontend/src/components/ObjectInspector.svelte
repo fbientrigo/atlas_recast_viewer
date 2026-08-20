@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { CutDefinition } from '../data/schema';
+  import type { CutDefinition, JetLogic } from '../data/schema';
   import type { Language } from '../i18n';
   import { cutText } from '../i18n';
   import { eventPassesSelectedCut, firstFailedCut } from '../core/cohorts';
-  import { eventPassesCuts } from '../core/selection';
+  import { eventPassesCuts, jetSelectionPasses, type JetScaleContext } from '../core/selection';
   import {
     jetBranchPasses,
     jetThresholdGeV,
@@ -16,6 +16,10 @@
   export let cuts: CutDefinition[];
   export let disabledCuts: Set<string>;
   export let language: Language;
+  export let jetLogic: JetLogic | undefined = undefined;
+  export let jetScale = 1;
+
+  $: jetScaleContext = { jetLogic, scale: jetScale } as JetScaleContext;
 
   const copy = {
     es: {
@@ -50,11 +54,10 @@
   $: event = inspected && inspected.kind !== 'layer' ? inspected.event : null;
   $: vertex = inspected && (inspected.kind === 'vertex' || inspected.kind === 'track') ? inspected.vertex : null;
   $: enabledCutIds = cuts.filter((item) => item.kind !== 'response_weight' && item.kind !== 'summary' && !disabledCuts.has(item.id)).map((item) => item.id);
-  $: eventCurrentPass = event && cut.kind !== 'response_weight' && cut.kind !== 'summary' ? eventPassesSelectedCut(event, cut) : null;
-  $: eventFullPass = event ? eventPassesCuts(event, enabledCutIds) : null;
-  $: failedId = event ? firstFailedCut(event, cuts, disabledCuts) : null;
+  $: eventCurrentPass = event && cut.kind !== 'response_weight' && cut.kind !== 'summary' ? eventPassesSelectedCut(event, cut, jetScaleContext) : null;
+  $: eventFullPass = event ? eventPassesCuts(event, enabledCutIds, cuts, jetScaleContext) : null;
+  $: failedId = event ? firstFailedCut(event, cuts, disabledCuts, jetScaleContext) : null;
   $: failedCut = cuts.find((item) => item.id === failedId);
-  $: jetCut = cuts.find((item) => item.id === 'jet_selection');
   $: d0Threshold = cuts.find((item) => item.id === 'd0_gt_2_mm')?.parameters?.track_abs_d0_min_mm ?? null;
   $: trackPtOverCharge = inspected?.kind === 'track' ? trackPtOverChargeGeV(inspected.track) : null;
 
@@ -138,20 +141,21 @@
       <section><h4>{text.currentConnection}</h4><p>{connectionFor(inspected, cut, d0Threshold, language, text)}</p></section>
       <p class="formula">d0 = rprod · sin(φprod − φtrack)</p>
     {:else if inspected.kind === 'jet'}
-      {@const threshold = jetCut ? jetThresholdGeV(jetCut, inspected.jet.rank) : null}
-      {@const branchPass = jetCut ? jetBranchPasses(jetCut, inspected.jet) : null}
+      {@const threshold = jetThresholdGeV(jetLogic, inspected.jet.rank, jetScale)}
+      {@const branchPass = jetBranchPasses(jetLogic, inspected.jet, jetScale)}
+      {@const eventOrPass = jetSelectionPasses(inspected.event, jetLogic, jetScale)}
       <dl class="metrics prominent">
         <div><dt>{text.rank}</dt><dd>j{inspected.jet.rank}</dd></div><div><dt>pT</dt><dd>{inspected.jet.pt_GeV.toFixed(2)} GeV</dd></div>
-        <div><dt>{text.etaPhi}</dt><dd>{inspected.jet.eta.toFixed(3)}, {inspected.jet.phi.toFixed(3)}</dd></div><div><dt>{text.jetCount}</dt><dd>{inspected.event.jets.length}</dd></div>
-        <div><dt>{text.threshold}</dt><dd>{threshold === null ? '—' : `${threshold} GeV`}</dd></div><div><dt>{text.branch}</dt><dd class:pass={branchPass === true} class:fail={branchPass === false}>{branchPass === null ? text.notApplicable : yesNo(branchPass, text)}</dd></div>
-        <div><dt>{text.eventOr}</dt><dd class:pass={inspected.event.predicates.jet_selection} class:fail={!inspected.event.predicates.jet_selection}>{yesNo(inspected.event.predicates.jet_selection, text)}</dd></div>
+        <div><dt>{text.etaPhi}</dt><dd>{inspected.jet.eta === null || inspected.jet.phi === null ? '—' : `${inspected.jet.eta.toFixed(3)}, ${inspected.jet.phi.toFixed(3)}`}</dd></div><div><dt>{text.jetCount}</dt><dd>{inspected.event.jets.length}</dd></div>
+        <div><dt>{text.threshold}</dt><dd>{threshold === null ? '—' : `${threshold.toFixed(1)} GeV`}</dd></div><div><dt>{text.branch}</dt><dd class:pass={branchPass === true} class:fail={branchPass === false}>{branchPass === null ? text.notApplicable : yesNo(branchPass, text)}</dd></div>
+        <div><dt>{text.eventOr}</dt><dd class:pass={eventOrPass} class:fail={!eventOrPass}>{yesNo(eventOrPass, text)}</dd></div>
       </dl>
       <section><h4>{text.currentConnection}</h4><p>{connectionFor(inspected, cut, d0Threshold, language, text)}</p></section>
     {:else}
       <section><h4>{text.currentConnection}</h4><p>{connectionFor(inspected, cut, d0Threshold, language, text)}</p></section>
     {/if}
 
-    <details class="pass-list"><summary>{text.passList}</summary>{#each cuts as item}<div><span>{cutText(item, language).name}</span>{#if item.kind === 'response_weight'}<b>{text.responseWeight}</b>{:else if item.kind === 'summary'}<b>—</b>{:else if disabledCuts.has(item.id)}<b>{text.disabled}</b>{:else}<b class:pass={event ? eventPassesSelectedCut(event, item) : false} class:fail={event ? !eventPassesSelectedCut(event, item) : false}>{event ? yesNo(eventPassesSelectedCut(event, item), text) : '—'}</b>{/if}</div>{/each}</details>
+    <details class="pass-list"><summary>{text.passList}</summary>{#each cuts as item}<div><span>{cutText(item, language).name}</span>{#if item.kind === 'response_weight'}<b>{text.responseWeight}</b>{:else if item.kind === 'summary'}<b>—</b>{:else if disabledCuts.has(item.id)}<b>{text.disabled}</b>{:else}<b class:pass={event ? eventPassesSelectedCut(event, item, jetScaleContext) : false} class:fail={event ? !eventPassesSelectedCut(event, item, jetScaleContext) : false}>{event ? yesNo(eventPassesSelectedCut(event, item, jetScaleContext), text) : '—'}</b>{/if}</div>{/each}</details>
     <dl class="event-meta"><div><dt>{text.weight}</dt><dd>{event?.weight.toPrecision(5)}</dd></div><div><dt>{text.firstFailed}</dt><dd>{failedCut ? cutText(failedCut, language).name : text.none}</dd></div></dl>
   {/if}
 </article>

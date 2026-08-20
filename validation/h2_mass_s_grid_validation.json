@@ -1,0 +1,4501 @@
+{
+  "masses": [
+    130,
+    150,
+    170,
+    200,
+    250,
+    300,
+    330,
+    345
+  ],
+  "s_grid": [
+    1.0,
+    0.0
+  ],
+  "n_rows": 560,
+  "all_passed": true,
+  "comparison_contract": "exact equality on raw counts; 1e-6 tolerance on the weighted acceptance_x_efficiency numerator",
+  "rows": [
+    {
+      "mass_GeV": 130,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 357.0,
+      "observed": 357.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 357.0,
+      "observed": 357.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 301.0,
+      "observed": 301.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 300.0,
+      "observed": 300.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 300.0,
+      "observed": 300.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 300.0,
+      "observed": 300.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 224.64262732464184,
+      "observed": 224.64262732464184,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 527.0,
+      "observed": 527.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 527.0,
+      "observed": 527.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 443.0,
+      "observed": 443.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 442.0,
+      "observed": 442.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 442.0,
+      "observed": 442.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 442.0,
+      "observed": 442.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 353.8494263657957,
+      "observed": 353.84942636579575,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 817.0,
+      "observed": 817.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 817.0,
+      "observed": 817.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 672.0,
+      "observed": 672.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 670.0,
+      "observed": 670.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 670.0,
+      "observed": 670.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 670.0,
+      "observed": 670.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 542.8945681310774,
+      "observed": 542.8945681310774,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1322.0,
+      "observed": 1322.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1322.0,
+      "observed": 1322.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1053.0,
+      "observed": 1053.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1051.0,
+      "observed": 1051.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1050.0,
+      "observed": 1050.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1050.0,
+      "observed": 1050.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 819.4875643413,
+      "observed": 819.4875643413,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 2106.0,
+      "observed": 2106.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 2106.0,
+      "observed": 2106.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 1626.0,
+      "observed": 1626.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 1624.0,
+      "observed": 1624.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 1621.0,
+      "observed": 1621.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 1620.0,
+      "observed": 1620.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 1101.248313369022,
+      "observed": 1101.248313369022,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 3526.0,
+      "observed": 3526.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 3526.0,
+      "observed": 3526.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 2598.0,
+      "observed": 2598.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 2595.0,
+      "observed": 2595.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 2590.0,
+      "observed": 2590.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 2586.0,
+      "observed": 2586.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 1376.838304436652,
+      "observed": 1376.8383044366522,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 5905.0,
+      "observed": 5905.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 5905.0,
+      "observed": 5905.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 4063.0,
+      "observed": 4063.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 4056.0,
+      "observed": 4056.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 4048.0,
+      "observed": 4048.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 4040.0,
+      "observed": 4040.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 1593.7548919548062,
+      "observed": 1593.7548919548062,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 9450.0,
+      "observed": 9450.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 9450.0,
+      "observed": 9450.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6010.0,
+      "observed": 6010.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 5997.0,
+      "observed": 5997.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 5987.0,
+      "observed": 5987.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 5975.0,
+      "observed": 5975.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 1754.6848075845778,
+      "observed": 1754.684807584578,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 14041.0,
+      "observed": 14041.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 14041.0,
+      "observed": 14041.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 8240.0,
+      "observed": 8240.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 8223.0,
+      "observed": 8223.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 8207.0,
+      "observed": 8207.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 8181.0,
+      "observed": 8181.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 1835.3555460149619,
+      "observed": 1835.355546014962,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 16241.0,
+      "observed": 16241.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 16241.0,
+      "observed": 16241.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 9191.0,
+      "observed": 9191.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 9174.0,
+      "observed": 9174.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 9148.0,
+      "observed": 9148.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 9118.0,
+      "observed": 9118.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 130,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 1847.584422797898,
+      "observed": 1847.584422797898,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 460.0,
+      "observed": 460.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 460.0,
+      "observed": 460.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 373.0,
+      "observed": 373.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 371.0,
+      "observed": 371.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 371.0,
+      "observed": 371.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 370.0,
+      "observed": 370.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 267.50691929866827,
+      "observed": 267.5069192986683,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 671.0,
+      "observed": 671.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 671.0,
+      "observed": 671.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 525.0,
+      "observed": 525.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 522.0,
+      "observed": 522.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 522.0,
+      "observed": 522.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 521.0,
+      "observed": 521.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 398.8664735325457,
+      "observed": 398.8664735325457,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 1051.0,
+      "observed": 1051.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 1051.0,
+      "observed": 1051.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 816.0,
+      "observed": 816.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 813.0,
+      "observed": 813.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 812.0,
+      "observed": 812.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 811.0,
+      "observed": 811.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 640.1673054180781,
+      "observed": 640.1673054180782,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1678.0,
+      "observed": 1678.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1678.0,
+      "observed": 1678.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1271.0,
+      "observed": 1271.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1267.0,
+      "observed": 1267.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1266.0,
+      "observed": 1266.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1264.0,
+      "observed": 1264.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 975.0345819329218,
+      "observed": 975.0345819329218,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 2711.0,
+      "observed": 2711.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 2711.0,
+      "observed": 2711.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 1955.0,
+      "observed": 1955.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 1951.0,
+      "observed": 1951.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 1950.0,
+      "observed": 1950.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 1946.0,
+      "observed": 1946.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 1320.4971807589413,
+      "observed": 1320.4971807589416,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 4440.0,
+      "observed": 4440.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 4440.0,
+      "observed": 4440.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 2989.0,
+      "observed": 2989.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 2982.0,
+      "observed": 2982.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 2980.0,
+      "observed": 2980.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 2973.0,
+      "observed": 2973.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 1643.6539536333717,
+      "observed": 1643.6539536333717,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 7220.0,
+      "observed": 7220.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 7220.0,
+      "observed": 7220.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 4498.0,
+      "observed": 4498.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 4490.0,
+      "observed": 4490.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 4487.0,
+      "observed": 4487.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 4478.0,
+      "observed": 4478.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 1896.9681442633955,
+      "observed": 1896.9681442633955,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 11193.0,
+      "observed": 11193.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 11193.0,
+      "observed": 11193.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6376.0,
+      "observed": 6376.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6363.0,
+      "observed": 6363.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6356.0,
+      "observed": 6356.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6343.0,
+      "observed": 6343.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 2055.8477138107755,
+      "observed": 2055.8477138107755,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 15529.0,
+      "observed": 15529.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 15529.0,
+      "observed": 15529.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 8206.0,
+      "observed": 8206.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 8188.0,
+      "observed": 8188.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 8174.0,
+      "observed": 8174.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 8156.0,
+      "observed": 8156.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 2121.11900500862,
+      "observed": 2121.11900500862,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 17358.0,
+      "observed": 17358.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 17358.0,
+      "observed": 17358.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 8948.0,
+      "observed": 8948.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 8929.0,
+      "observed": 8929.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 8912.0,
+      "observed": 8912.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 8892.0,
+      "observed": 8892.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 150,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 2137.7077098018412,
+      "observed": 2137.7077098018412,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 558.0,
+      "observed": 558.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 558.0,
+      "observed": 558.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 440.0,
+      "observed": 440.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 440.0,
+      "observed": 440.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 440.0,
+      "observed": 440.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 439.0,
+      "observed": 439.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 318.60918616712036,
+      "observed": 318.6091861671204,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 836.0,
+      "observed": 836.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 836.0,
+      "observed": 836.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 634.0,
+      "observed": 634.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 634.0,
+      "observed": 634.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 634.0,
+      "observed": 634.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 633.0,
+      "observed": 633.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 486.76973507553964,
+      "observed": 486.7697350755397,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 1304.0,
+      "observed": 1304.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 1304.0,
+      "observed": 1304.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 937.0,
+      "observed": 937.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 937.0,
+      "observed": 937.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 936.0,
+      "observed": 936.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 933.0,
+      "observed": 933.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 738.9282775559275,
+      "observed": 738.9282775559275,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 2088.0,
+      "observed": 2088.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 2088.0,
+      "observed": 2088.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1428.0,
+      "observed": 1428.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1427.0,
+      "observed": 1427.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1426.0,
+      "observed": 1426.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1423.0,
+      "observed": 1423.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1108.0338195720935,
+      "observed": 1108.0338195720935,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 3362.0,
+      "observed": 3362.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 3362.0,
+      "observed": 3362.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 2178.0,
+      "observed": 2178.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 2173.0,
+      "observed": 2173.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 2171.0,
+      "observed": 2171.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 2168.0,
+      "observed": 2168.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 1464.9803803720515,
+      "observed": 1464.9803803720515,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 5436.0,
+      "observed": 5436.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 5436.0,
+      "observed": 5436.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 3267.0,
+      "observed": 3267.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 3257.0,
+      "observed": 3257.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 3253.0,
+      "observed": 3253.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 3250.0,
+      "observed": 3250.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 1823.4779127133197,
+      "observed": 1823.47791271332,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 8668.0,
+      "observed": 8668.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 8668.0,
+      "observed": 8668.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 4791.0,
+      "observed": 4791.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 4778.0,
+      "observed": 4778.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 4774.0,
+      "observed": 4774.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 4769.0,
+      "observed": 4769.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 2093.406236506239,
+      "observed": 2093.406236506239,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 12700.0,
+      "observed": 12700.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 12700.0,
+      "observed": 12700.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6417.0,
+      "observed": 6417.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6402.0,
+      "observed": 6402.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6396.0,
+      "observed": 6396.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6384.0,
+      "observed": 6384.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 2236.331786655424,
+      "observed": 2236.3317866554244,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 16580.0,
+      "observed": 16580.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 16580.0,
+      "observed": 16580.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 7897.0,
+      "observed": 7897.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 7882.0,
+      "observed": 7882.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 7876.0,
+      "observed": 7876.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 7862.0,
+      "observed": 7862.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 2315.042244573562,
+      "observed": 2315.0422445735626,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 18092.0,
+      "observed": 18092.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 18092.0,
+      "observed": 18092.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 8467.0,
+      "observed": 8467.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 8452.0,
+      "observed": 8452.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 8445.0,
+      "observed": 8445.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 8430.0,
+      "observed": 8430.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 170,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 2344.4388720225215,
+      "observed": 2344.4388720225215,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 785.0,
+      "observed": 785.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 785.0,
+      "observed": 785.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 585.0,
+      "observed": 585.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 585.0,
+      "observed": 585.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 585.0,
+      "observed": 585.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 585.0,
+      "observed": 585.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 428.79092561741413,
+      "observed": 428.7909256174142,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 1212.0,
+      "observed": 1212.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 1212.0,
+      "observed": 1212.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 855.0,
+      "observed": 855.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 854.0,
+      "observed": 854.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 854.0,
+      "observed": 854.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 854.0,
+      "observed": 854.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 669.0564886630988,
+      "observed": 669.0564886630988,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 1836.0,
+      "observed": 1836.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 1836.0,
+      "observed": 1836.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 1218.0,
+      "observed": 1218.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 1216.0,
+      "observed": 1216.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 1216.0,
+      "observed": 1216.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 1216.0,
+      "observed": 1216.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 991.2842855838489,
+      "observed": 991.2842855838489,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 2869.0,
+      "observed": 2869.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 2869.0,
+      "observed": 2869.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1831.0,
+      "observed": 1831.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1826.0,
+      "observed": 1826.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1825.0,
+      "observed": 1825.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1825.0,
+      "observed": 1825.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 1446.055526630188,
+      "observed": 1446.055526630188,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 4613.0,
+      "observed": 4613.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 4613.0,
+      "observed": 4613.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 2697.0,
+      "observed": 2697.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 2688.0,
+      "observed": 2688.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 2687.0,
+      "observed": 2687.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 2686.0,
+      "observed": 2686.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 1919.4554096267786,
+      "observed": 1919.4554096267786,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 7298.0,
+      "observed": 7298.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 7298.0,
+      "observed": 7298.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 3868.0,
+      "observed": 3868.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 3855.0,
+      "observed": 3855.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 3853.0,
+      "observed": 3853.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 3852.0,
+      "observed": 3852.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 2338.1535764010773,
+      "observed": 2338.1535764010773,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 10795.0,
+      "observed": 10795.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 10795.0,
+      "observed": 10795.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 5189.0,
+      "observed": 5189.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 5175.0,
+      "observed": 5175.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 5171.0,
+      "observed": 5171.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 5169.0,
+      "observed": 5169.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 2596.981146864504,
+      "observed": 2596.981146864504,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 14544.0,
+      "observed": 14544.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 14544.0,
+      "observed": 14544.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6543.0,
+      "observed": 6543.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6528.0,
+      "observed": 6528.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6523.0,
+      "observed": 6523.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6520.0,
+      "observed": 6520.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 2745.295466372931,
+      "observed": 2745.295466372931,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 17761.0,
+      "observed": 17761.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 17761.0,
+      "observed": 17761.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 7649.0,
+      "observed": 7649.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 7630.0,
+      "observed": 7630.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 7625.0,
+      "observed": 7625.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 7618.0,
+      "observed": 7618.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 2831.9975588143143,
+      "observed": 2831.9975588143143,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 18825.0,
+      "observed": 18825.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 18825.0,
+      "observed": 18825.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 7981.0,
+      "observed": 7981.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 7962.0,
+      "observed": 7962.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 7957.0,
+      "observed": 7957.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 7950.0,
+      "observed": 7950.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 200,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 2844.693511001599,
+      "observed": 2844.693511001599,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 1450.0,
+      "observed": 1450.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 1450.0,
+      "observed": 1450.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 933.0,
+      "observed": 933.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 931.0,
+      "observed": 931.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 931.0,
+      "observed": 931.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 931.0,
+      "observed": 931.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 667.9240634751716,
+      "observed": 667.9240634751717,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 2172.0,
+      "observed": 2172.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 2172.0,
+      "observed": 2172.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 1350.0,
+      "observed": 1350.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 1346.0,
+      "observed": 1346.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 1346.0,
+      "observed": 1346.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 1346.0,
+      "observed": 1346.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 1046.2738302213472,
+      "observed": 1046.273830221347,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 3247.0,
+      "observed": 3247.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 3247.0,
+      "observed": 3247.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 1905.0,
+      "observed": 1905.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 1899.0,
+      "observed": 1899.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 1899.0,
+      "observed": 1899.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 1899.0,
+      "observed": 1899.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 1544.6990564341215,
+      "observed": 1544.6990564341215,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 4880.0,
+      "observed": 4880.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 4880.0,
+      "observed": 4880.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 2623.0,
+      "observed": 2623.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 2617.0,
+      "observed": 2617.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 2617.0,
+      "observed": 2617.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 2616.0,
+      "observed": 2616.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 2128.8455510869994,
+      "observed": 2128.8455510869994,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 7273.0,
+      "observed": 7273.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 7273.0,
+      "observed": 7273.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 3573.0,
+      "observed": 3573.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 3565.0,
+      "observed": 3565.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 3565.0,
+      "observed": 3565.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 3563.0,
+      "observed": 3563.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 2710.881269275301,
+      "observed": 2710.8812692753013,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 10434.0,
+      "observed": 10434.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 10434.0,
+      "observed": 10434.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 4740.0,
+      "observed": 4740.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 4731.0,
+      "observed": 4731.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 4731.0,
+      "observed": 4731.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 4727.0,
+      "observed": 4727.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 3208.632192445305,
+      "observed": 3208.632192445305,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 13837.0,
+      "observed": 13837.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 13837.0,
+      "observed": 13837.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 5882.0,
+      "observed": 5882.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 5872.0,
+      "observed": 5872.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 5872.0,
+      "observed": 5872.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 5868.0,
+      "observed": 5868.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 3529.432046516933,
+      "observed": 3529.432046516933,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 16829.0,
+      "observed": 16829.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 16829.0,
+      "observed": 16829.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6856.0,
+      "observed": 6856.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6843.0,
+      "observed": 6843.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6843.0,
+      "observed": 6843.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6837.0,
+      "observed": 6837.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 3718.4985016601754,
+      "observed": 3718.4985016601754,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 18819.0,
+      "observed": 18819.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 18819.0,
+      "observed": 18819.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 7435.0,
+      "observed": 7435.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 7421.0,
+      "observed": 7421.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 7419.0,
+      "observed": 7419.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 7413.0,
+      "observed": 7413.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 3808.631955976368,
+      "observed": 3808.631955976368,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 19439.0,
+      "observed": 19439.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 19439.0,
+      "observed": 19439.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 7604.0,
+      "observed": 7604.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 7590.0,
+      "observed": 7590.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 7588.0,
+      "observed": 7588.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 7580.0,
+      "observed": 7580.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 250,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 3833.5893728234614,
+      "observed": 3833.5893728234614,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 2406.0,
+      "observed": 2406.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 2406.0,
+      "observed": 2406.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 1377.0,
+      "observed": 1377.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 1374.0,
+      "observed": 1374.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 1374.0,
+      "observed": 1374.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 1373.0,
+      "observed": 1373.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 993.5111142716435,
+      "observed": 993.5111142716436,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 3475.0,
+      "observed": 3475.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 3475.0,
+      "observed": 3475.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 1872.0,
+      "observed": 1872.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 1868.0,
+      "observed": 1868.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 1868.0,
+      "observed": 1868.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 1866.0,
+      "observed": 1866.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 1440.4164457767201,
+      "observed": 1440.4164457767204,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 5043.0,
+      "observed": 5043.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 5043.0,
+      "observed": 5043.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 2525.0,
+      "observed": 2525.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 2518.0,
+      "observed": 2518.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 2518.0,
+      "observed": 2518.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 2516.0,
+      "observed": 2516.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 2037.8889074608037,
+      "observed": 2037.8889074608037,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 7199.0,
+      "observed": 7199.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 7199.0,
+      "observed": 7199.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 3355.0,
+      "observed": 3355.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 3348.0,
+      "observed": 3348.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 3348.0,
+      "observed": 3348.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 3346.0,
+      "observed": 3346.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 2768.294954026107,
+      "observed": 2768.294954026107,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 9947.0,
+      "observed": 9947.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 9947.0,
+      "observed": 9947.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 4324.0,
+      "observed": 4324.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 4315.0,
+      "observed": 4315.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 4315.0,
+      "observed": 4315.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 4313.0,
+      "observed": 4313.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 3499.2705870793125,
+      "observed": 3499.2705870793125,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 13042.0,
+      "observed": 13042.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 13042.0,
+      "observed": 13042.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 5351.0,
+      "observed": 5351.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 5340.0,
+      "observed": 5340.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 5340.0,
+      "observed": 5340.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 5338.0,
+      "observed": 5338.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 4107.767454637272,
+      "observed": 4107.767454637272,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 15909.0,
+      "observed": 15909.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 15909.0,
+      "observed": 15909.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 6228.0,
+      "observed": 6228.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 6217.0,
+      "observed": 6217.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 6217.0,
+      "observed": 6217.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 6215.0,
+      "observed": 6215.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 4537.382698468011,
+      "observed": 4537.382698468011,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 18081.0,
+      "observed": 18081.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 18081.0,
+      "observed": 18081.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6851.0,
+      "observed": 6851.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6840.0,
+      "observed": 6840.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6839.0,
+      "observed": 6839.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6836.0,
+      "observed": 6836.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 4754.147220607233,
+      "observed": 4754.147220607232,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 19326.0,
+      "observed": 19326.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 19326.0,
+      "observed": 19326.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 7207.0,
+      "observed": 7207.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 7196.0,
+      "observed": 7196.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 7195.0,
+      "observed": 7195.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 7192.0,
+      "observed": 7192.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 4878.714975256782,
+      "observed": 4878.714975256783,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 19669.0,
+      "observed": 19669.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 19669.0,
+      "observed": 19669.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 7304.0,
+      "observed": 7304.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 7293.0,
+      "observed": 7293.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 7292.0,
+      "observed": 7292.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 7289.0,
+      "observed": 7289.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 300,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 4902.077184476334,
+      "observed": 4902.077184476334,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 3102.0,
+      "observed": 3102.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 3102.0,
+      "observed": 3102.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 1640.0,
+      "observed": 1640.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 1638.0,
+      "observed": 1638.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 1638.0,
+      "observed": 1638.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 1638.0,
+      "observed": 1638.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 1170.1629794226142,
+      "observed": 1170.1629794226142,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 4382.0,
+      "observed": 4382.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 4382.0,
+      "observed": 4382.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 2148.0,
+      "observed": 2148.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 2146.0,
+      "observed": 2146.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 2146.0,
+      "observed": 2146.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 2146.0,
+      "observed": 2146.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 1627.7069698016685,
+      "observed": 1627.7069698016687,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 6183.0,
+      "observed": 6183.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 6183.0,
+      "observed": 6183.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 2804.0,
+      "observed": 2804.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 2802.0,
+      "observed": 2802.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 2802.0,
+      "observed": 2802.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 2802.0,
+      "observed": 2802.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 2236.4857238297186,
+      "observed": 2236.4857238297186,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 8568.0,
+      "observed": 8568.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 8568.0,
+      "observed": 8568.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 3647.0,
+      "observed": 3647.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 3643.0,
+      "observed": 3643.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 3643.0,
+      "observed": 3643.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 3642.0,
+      "observed": 3642.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 3016.914354521039,
+      "observed": 3016.914354521039,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 11334.0,
+      "observed": 11334.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 11334.0,
+      "observed": 11334.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 4528.0,
+      "observed": 4528.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 4523.0,
+      "observed": 4523.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 4523.0,
+      "observed": 4523.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 4522.0,
+      "observed": 4522.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 3715.726974311382,
+      "observed": 3715.7269743113825,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 14137.0,
+      "observed": 14137.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 14137.0,
+      "observed": 14137.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 5416.0,
+      "observed": 5416.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 5411.0,
+      "observed": 5411.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 5410.0,
+      "observed": 5410.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 5409.0,
+      "observed": 5409.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 4320.21986763711,
+      "observed": 4320.21986763711,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 16658.0,
+      "observed": 16658.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 16658.0,
+      "observed": 16658.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 6151.0,
+      "observed": 6151.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 6146.0,
+      "observed": 6146.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 6145.0,
+      "observed": 6145.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 6144.0,
+      "observed": 6144.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 4762.920254170316,
+      "observed": 4762.920254170316,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 18436.0,
+      "observed": 18436.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 18436.0,
+      "observed": 18436.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6643.0,
+      "observed": 6643.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6638.0,
+      "observed": 6638.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6637.0,
+      "observed": 6637.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6636.0,
+      "observed": 6636.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 5003.827565663882,
+      "observed": 5003.827565663881,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 19429.0,
+      "observed": 19429.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 19429.0,
+      "observed": 19429.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 6917.0,
+      "observed": 6917.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 6912.0,
+      "observed": 6912.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 6910.0,
+      "observed": 6910.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 6909.0,
+      "observed": 6909.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 5107.23786664599,
+      "observed": 5107.23786664599,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 19712.0,
+      "observed": 19712.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 19712.0,
+      "observed": 19712.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 6980.0,
+      "observed": 6980.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 6975.0,
+      "observed": 6975.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 6973.0,
+      "observed": 6973.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 6972.0,
+      "observed": 6972.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 330,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 5134.0469521245595,
+      "observed": 5134.04695212456,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 3512.0,
+      "observed": 3512.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 3512.0,
+      "observed": 3512.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 1811.0,
+      "observed": 1811.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 1807.0,
+      "observed": 1807.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 1807.0,
+      "observed": 1807.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 1806.0,
+      "observed": 1806.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 1.0,
+      "cut_id": "0",
+      "expected": 1269.2646370499986,
+      "observed": 1269.2646370499986,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 4941.0,
+      "observed": 4941.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 4941.0,
+      "observed": 4941.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 2417.0,
+      "observed": 2417.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 2413.0,
+      "observed": 2413.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 2413.0,
+      "observed": 2413.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 2412.0,
+      "observed": 2412.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "9",
+      "expected": 1811.1914309287095,
+      "observed": 1811.1914309287095,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 6843.0,
+      "observed": 6843.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 6843.0,
+      "observed": 6843.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 3077.0,
+      "observed": 3077.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 3072.0,
+      "observed": 3072.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 3072.0,
+      "observed": 3072.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 3071.0,
+      "observed": 3071.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "8",
+      "expected": 2423.701722105293,
+      "observed": 2423.701722105293,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 9280.0,
+      "observed": 9280.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 9280.0,
+      "observed": 9280.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 3895.0,
+      "observed": 3895.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 3890.0,
+      "observed": 3890.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 3890.0,
+      "observed": 3890.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 3889.0,
+      "observed": 3889.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "7",
+      "expected": 3158.0807173206686,
+      "observed": 3158.0807173206686,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 12033.0,
+      "observed": 12033.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 12033.0,
+      "observed": 12033.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 4770.0,
+      "observed": 4770.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 4765.0,
+      "observed": 4765.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 4765.0,
+      "observed": 4765.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 4763.0,
+      "observed": 4763.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "6",
+      "expected": 3884.3619379913753,
+      "observed": 3884.3619379913757,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 14730.0,
+      "observed": 14730.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 14730.0,
+      "observed": 14730.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 5585.0,
+      "observed": 5585.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 5579.0,
+      "observed": 5579.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 5579.0,
+      "observed": 5579.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 5577.0,
+      "observed": 5577.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "5",
+      "expected": 4454.519538012035,
+      "observed": 4454.519538012035,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 17079.0,
+      "observed": 17079.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 17079.0,
+      "observed": 17079.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 6247.0,
+      "observed": 6247.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 6240.0,
+      "observed": 6240.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 6240.0,
+      "observed": 6240.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 6238.0,
+      "observed": 6238.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "4",
+      "expected": 4873.922968330507,
+      "observed": 4873.9229683305075,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 18603.0,
+      "observed": 18603.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 18603.0,
+      "observed": 18603.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6676.0,
+      "observed": 6676.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6668.0,
+      "observed": 6668.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6668.0,
+      "observed": 6668.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 6666.0,
+      "observed": 6666.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "3",
+      "expected": 5101.651153940626,
+      "observed": 5101.6511539406265,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 19496.0,
+      "observed": 19496.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 19496.0,
+      "observed": 19496.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 6915.0,
+      "observed": 6915.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 6906.0,
+      "observed": 6906.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 6906.0,
+      "observed": 6906.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 6903.0,
+      "observed": 6903.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "2",
+      "expected": 5214.079448551336,
+      "observed": 5214.079448551336,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 19751.0,
+      "observed": 19751.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 19751.0,
+      "observed": 19751.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 6988.0,
+      "observed": 6988.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 6979.0,
+      "observed": 6979.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 6979.0,
+      "observed": 6979.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 6975.0,
+      "observed": 6975.0,
+      "passed": true
+    },
+    {
+      "mass_GeV": 345,
+      "s": 0.0,
+      "cut_id": "1",
+      "expected": 5250.517325106555,
+      "observed": 5250.517325106556,
+      "passed": true
+    }
+  ]
+}

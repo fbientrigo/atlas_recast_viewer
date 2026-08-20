@@ -98,5 +98,16 @@ surfaces are analysis limits; dashed guides are response-map bins and are off
 by default. Tracks are straight truth/recast directions without helix
 propagation. None of these are ATLAS hits or full detector simulation.
 
-H2 data are not ingested. A future H2 adapter must emit the same contract and
-use the same components without a `source_kind` UI branch.
+The H2 mass-control campaign (`make h2-datasets`) is ingested for all 8
+discovered masses through the same contract, with zero H2-specific frontend
+branches: full 20000-event statistics drive every cutflow number, a bounded
+400-event display pack drives jet inspection, and a diagnostic jet-threshold
+scale `s` (never a published ATLAS variant) reclassifies `jet_selection`
+live from `jets[]` and `cuts.json.jet_logic` metadata alone. A deterministic,
+pedagogically stratified 100-event geometry pack per mass
+(`make h2-geometry`) recovers real DV/track/jet coordinates for a curated
+subset via telemetry replay of the frozen campaign LHE/seed — see
+`docs/H2_GEOMETRY_REPLAY_CONTRACT.md` for the replay contract and
+`docs/DATA_CONTRACT.md`'s "Optional geometry pack" section for the schema.
+The same `GeometryViewer`/`ObjectInspector` render it unmodified; `s` changes
+classification only, never the 100 events' stored geometry.

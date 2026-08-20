@@ -34,6 +34,20 @@ export interface Manifest {
   generator_command: string;
   capabilities: Capabilities;
   translations?: Record<string, { title: string; reference_sample: string }>;
+  /**
+   * Presence signals a supplementary geometry_events.json file: a small,
+   * deterministically curated subset of events for which real DV/track/jet
+   * coordinates were recovered by telemetry replay (never the full
+   * statistics population — see AcceptanceStrip / DATA_CONTRACT.md). Purely
+   * additive and source-neutral; absent for every dataset without a
+   * geometry pack.
+   */
+  geometry_pack?: {
+    event_count: number;
+    selection_method: string;
+    replay_mode: string;
+    cohort_summary: Record<string, number>;
+  };
 }
 
 export type CutKind = 'atomic_boolean' | 'compound_boolean' | 'response_weight' | 'summary';
@@ -62,6 +76,12 @@ export interface CutDefinition {
   depends_on_parameters: string[];
   parameters?: Record<string, number>;
   requires_fields: string[];
+  // Absence means "vertex" (the historical default): the boolean lives per
+  // vertex and the event verdict is an OR across vertices. "event" means the
+  // source only ever computed a jet-blind event-level OR internally (no
+  // per-vertex breakdown was serialized), so the boolean lives directly in
+  // event.predicates instead.
+  predicate_scope?: 'vertex' | 'event';
   translations?: Record<string, {
     name: string;
     physical_meaning: string;
@@ -72,8 +92,11 @@ export interface CutDefinition {
 export interface EventJet {
   rank: number;
   pt_GeV: number;
-  eta: number;
-  phi: number;
+  // Nullable: some sources serialize jet pT without a reconstructed
+  // direction. Never fabricated; the frontend renders the jet as
+  // unavailable for 3D placement rather than inventing a position.
+  eta: number | null;
+  phi: number | null;
 }
 
 export interface EventTrack {
@@ -139,10 +162,13 @@ export interface EventRecord {
   subrun: number;
   source_event_index: number;
   weight: number;
-  source_weight_mb: number;
+  source_weight_mb: number | null;
   valid_weight: boolean;
   observables: { sum_pt_GeV: number; r_max_mm: number };
-  predicates: { jet_selection: boolean };
+  // Event-scoped boolean predicates: always includes jet_selection, plus
+  // any cut declared predicate_scope="event" in cuts.json, plus any
+  // s-independent additional jet-requirement leg declared in jet_logic.
+  predicates: Record<string, boolean>;
   response: { vertex_eff: number; event_eff: number };
   jets: EventJet[];
   vertices: EventVertex[];
@@ -155,6 +181,22 @@ export interface EventsDocument {
   events: EventRecord[];
 }
 
+export interface JetLogicAdditionalRequirement {
+  supported: boolean;
+  predicate_id: string;
+  scales_with_s: boolean;
+  description: string;
+}
+
+export interface JetLogicThresholdScale {
+  supported: boolean;
+  parameter_symbol: string;
+  baseline: number;
+  values: number[];
+  applies_to: string;
+  scope_note: string;
+}
+
 export interface JetLogic {
   region: string;
   rank_indexing: string;
@@ -162,6 +204,12 @@ export interface JetLogic {
   combination: string;
   branches: Array<{ jet_rank: number; threshold_GeV: number; comparison: string }>;
   event_level_note: string;
+  // Optional, generic capability metadata (Step 1E): a dataset without a
+  // diagnostic threshold_scale simply omits or sets supported=false, and the
+  // frontend disables the `s` control from this field alone, never from
+  // source_kind or dataset_id.
+  additional_requirement?: JetLogicAdditionalRequirement;
+  threshold_scale?: JetLogicThresholdScale;
 }
 
 export interface CutsDocument {
@@ -220,6 +268,8 @@ export interface ViewerDataset {
   cuts: CutsDocument;
   summary: Summary;
   events?: EventsDocument;
+  /** Optional curated geometry-only event pack (see manifest.geometry_pack). */
+  geometryEvents?: EventsDocument;
 }
 
 export class DatasetError extends Error {
@@ -467,89 +517,109 @@ export function validateDocuments(
 export function validateEventsDocument(
   eventsValue: unknown,
   dataset: ViewerDataset,
+  expectedCountOverride?: number,
+  fileName: string = 'events.json',
 ): EventsDocument {
-  const { dataset_id: datasetId, n_events: expectedEvents } = dataset.manifest;
-  const document = record(eventsValue, datasetId, 'events.json');
-  schema(document, datasetId, 'events.json');
+  const { dataset_id: datasetId, n_events: expectedEventsFromManifest } = dataset.manifest;
+  const expectedEvents = expectedCountOverride ?? expectedEventsFromManifest;
+  const document = record(eventsValue, datasetId, fileName);
+  schema(document, datasetId, fileName);
   if (document.dataset_id !== datasetId) {
-    throw new DatasetError(datasetId, 'events.json', 'dataset_id', datasetId, document.dataset_id);
+    throw new DatasetError(datasetId, fileName, 'dataset_id', datasetId, document.dataset_id);
   }
-  const semantics = record(document.selection_semantics, datasetId, 'events.json', 'selection_semantics');
+  const semantics = record(document.selection_semantics, datasetId, fileName, 'selection_semantics');
   for (const [key, value] of Object.entries(semantics)) {
-    if (typeof value !== 'string') throw new DatasetError(datasetId, 'events.json', `selection_semantics.${key}`, 'string', value);
+    if (typeof value !== 'string') throw new DatasetError(datasetId, fileName, `selection_semantics.${key}`, 'string', value);
   }
   if (!Array.isArray(document.events) || document.events.length === 0) {
-    throw new DatasetError(datasetId, 'events.json', 'events', 'non-empty array', document.events);
+    throw new DatasetError(datasetId, fileName, 'events', 'non-empty array', document.events);
   }
   if (expectedEvents !== null && document.events.length !== expectedEvents) {
-    throw new DatasetError(datasetId, 'events.json', 'events.length', String(expectedEvents), document.events.length);
+    throw new DatasetError(datasetId, fileName, 'events.length', String(expectedEvents), document.events.length);
   }
-  const vertexCutIds = new Set(
-    dataset.cuts.cuts
-      .filter((cut) => cut.id !== 'jet_selection' && cut.kind !== 'response_weight' && cut.kind !== 'summary')
-      .map((cut) => cut.id),
+  const booleanCuts = dataset.cuts.cuts.filter(
+    (cut) => cut.id !== 'jet_selection' && cut.kind !== 'response_weight' && cut.kind !== 'summary',
   );
+  const eventScopeCutIds = new Set(booleanCuts.filter((cut) => cut.predicate_scope === 'event').map((cut) => cut.id));
+  const vertexCutIds = new Set(booleanCuts.filter((cut) => !eventScopeCutIds.has(cut.id)).map((cut) => cut.id));
+  const hasGeometry = Boolean(dataset.manifest.capabilities.dv_radial || dataset.manifest.capabilities.dv_xyz);
   const eventIds = new Set<number>();
   for (const [eventIndex, rawEvent] of document.events.entries()) {
-    const event = record(rawEvent, datasetId, 'events.json', `events[${eventIndex}]`);
-    const eventId = numberField(event, 'event_id', datasetId, 'events.json');
+    const event = record(rawEvent, datasetId, fileName, `events[${eventIndex}]`);
+    const eventId = numberField(event, 'event_id', datasetId, fileName);
     if (!Number.isInteger(eventId) || eventIds.has(eventId)) {
-      throw new DatasetError(datasetId, 'events.json', `events[${eventIndex}].event_id`, 'unique integer', eventId);
+      throw new DatasetError(datasetId, fileName, `events[${eventIndex}].event_id`, 'unique integer', eventId);
     }
     eventIds.add(eventId);
-    const weight = numberField(event, 'weight', datasetId, 'events.json');
-    if (weight < 0) throw new DatasetError(datasetId, 'events.json', `events[${eventIndex}].weight`, 'non-negative number', weight);
+    const weight = numberField(event, 'weight', datasetId, fileName);
+    if (weight < 0) throw new DatasetError(datasetId, fileName, `events[${eventIndex}].weight`, 'non-negative number', weight);
     if (typeof event.valid_weight !== 'boolean') {
-      throw new DatasetError(datasetId, 'events.json', `events[${eventIndex}].valid_weight`, 'boolean', event.valid_weight);
+      throw new DatasetError(datasetId, fileName, `events[${eventIndex}].valid_weight`, 'boolean', event.valid_weight);
     }
-    const predicates = record(event.predicates, datasetId, 'events.json', `events[${eventIndex}].predicates`);
+    const predicates = record(event.predicates, datasetId, fileName, `events[${eventIndex}].predicates`);
     if (typeof predicates.jet_selection !== 'boolean') {
-      throw new DatasetError(datasetId, 'events.json', `events[${eventIndex}].predicates.jet_selection`, 'boolean', predicates.jet_selection);
+      throw new DatasetError(datasetId, fileName, `events[${eventIndex}].predicates.jet_selection`, 'boolean', predicates.jet_selection);
     }
-    const response = record(event.response, datasetId, 'events.json', `events[${eventIndex}].response`);
-    numberField(response, 'vertex_eff', datasetId, 'events.json');
-    numberField(response, 'event_eff', datasetId, 'events.json');
-    if (!Array.isArray(event.jets)) throw new DatasetError(datasetId, 'events.json', `events[${eventIndex}].jets`, 'array', event.jets);
+    for (const cutId of eventScopeCutIds) {
+      if (typeof predicates[cutId] !== 'boolean') {
+        throw new DatasetError(datasetId, fileName, `events[${eventIndex}].predicates.${cutId}`, 'boolean', predicates[cutId]);
+      }
+    }
+    const response = record(event.response, datasetId, fileName, `events[${eventIndex}].response`);
+    numberField(response, 'vertex_eff', datasetId, fileName);
+    numberField(response, 'event_eff', datasetId, fileName);
+    if (!Array.isArray(event.jets)) throw new DatasetError(datasetId, fileName, `events[${eventIndex}].jets`, 'array', event.jets);
     for (const [jetIndex, rawJet] of event.jets.entries()) {
-      const jet = record(rawJet, datasetId, 'events.json', `events[${eventIndex}].jets[${jetIndex}]`);
-      for (const field of ['rank', 'pt_GeV', 'eta', 'phi']) numberField(jet, field, datasetId, 'events.json');
+      const jet = record(rawJet, datasetId, fileName, `events[${eventIndex}].jets[${jetIndex}]`);
+      for (const field of ['rank', 'pt_GeV']) numberField(jet, field, datasetId, fileName);
+      for (const field of ['eta', 'phi']) nullableNumberField(jet, field, datasetId, fileName);
     }
-    if (!Array.isArray(event.vertices)) throw new DatasetError(datasetId, 'events.json', `events[${eventIndex}].vertices`, 'array', event.vertices);
+    if (!Array.isArray(event.vertices)) throw new DatasetError(datasetId, fileName, `events[${eventIndex}].vertices`, 'array', event.vertices);
+    if (!hasGeometry) {
+      if (event.vertices.length > 0) {
+        throw new DatasetError(datasetId, fileName, `events[${eventIndex}].vertices`, 'empty (no dv_radial/dv_xyz capability)', event.vertices);
+      }
+      continue;
+    }
     for (const [vertexIndex, rawVertex] of event.vertices.entries()) {
-      const vertex = record(rawVertex, datasetId, 'events.json', `events[${eventIndex}].vertices[${vertexIndex}]`);
+      const vertex = record(rawVertex, datasetId, fileName, `events[${eventIndex}].vertices[${vertexIndex}]`);
       for (const field of ['llp_index', 'pdg_id', 'x_mm', 'y_mm', 'z_mm', 'r_mm', 'selected_track_count', 'impacted_track_count', 'mass_GeV', 'vertex_eff']) {
-        numberField(vertex, field, datasetId, 'events.json');
+        numberField(vertex, field, datasetId, fileName);
       }
       const expectedR = Math.hypot(vertex.x_mm as number, vertex.y_mm as number);
       if (Math.abs((vertex.r_mm as number) - expectedR) > 1e-9 * Math.max(1, expectedR)) {
-        throw new DatasetError(datasetId, 'events.json', `events[${eventIndex}].vertices[${vertexIndex}].r_mm`, 'hypot(x_mm,y_mm)', vertex.r_mm);
+        throw new DatasetError(datasetId, fileName, `events[${eventIndex}].vertices[${vertexIndex}].r_mm`, 'hypot(x_mm,y_mm)', vertex.r_mm);
       }
-      const llpMomentum = record(vertex.llp_momentum_GeV, datasetId, 'events.json', `events[${eventIndex}].vertices[${vertexIndex}].llp_momentum_GeV`);
-      for (const component of ['px', 'py', 'pz']) numberField(llpMomentum, component, datasetId, 'events.json');
-      const vertexPredicates = record(vertex.predicates, datasetId, 'events.json', `events[${eventIndex}].vertices[${vertexIndex}].predicates`);
-      if (vertexCutIds.size !== Object.keys(vertexPredicates).length || [...vertexCutIds].some((id) => typeof vertexPredicates[id] !== 'boolean')) {
-        throw new DatasetError(datasetId, 'events.json', `events[${eventIndex}].vertices[${vertexIndex}].predicates`, `boolean keys ${[...vertexCutIds].join(',')}`, vertex.predicates);
+      const llpMomentum = record(vertex.llp_momentum_GeV, datasetId, fileName, `events[${eventIndex}].vertices[${vertexIndex}].llp_momentum_GeV`);
+      for (const component of ['px', 'py', 'pz']) numberField(llpMomentum, component, datasetId, fileName);
+      // A vertex must carry at least every predicate_scope="vertex" cut; it
+      // may additionally carry a genuine per-vertex breakdown for an
+      // event-scoped cut when this specific pack computed one (see
+      // DATA_CONTRACT.md and the matching preprocess/schema.py relaxation).
+      const vertexPredicates = record(vertex.predicates, datasetId, fileName, `events[${eventIndex}].vertices[${vertexIndex}].predicates`);
+      if ([...vertexCutIds].some((id) => typeof vertexPredicates[id] !== 'boolean')) {
+        throw new DatasetError(datasetId, fileName, `events[${eventIndex}].vertices[${vertexIndex}].predicates`, `boolean keys (at least) ${[...vertexCutIds].join(',')}`, vertex.predicates);
       }
-      if (!Array.isArray(vertex.tracks)) throw new DatasetError(datasetId, 'events.json', `events[${eventIndex}].vertices[${vertexIndex}].tracks`, 'array', vertex.tracks);
+      if (!Array.isArray(vertex.tracks)) throw new DatasetError(datasetId, fileName, `events[${eventIndex}].vertices[${vertexIndex}].tracks`, 'array', vertex.tracks);
       let selectedTracks = 0;
       let impactedTracks = 0;
       for (const [trackIndex, rawTrack] of vertex.tracks.entries()) {
-        const track = record(rawTrack, datasetId, 'events.json', `events[${eventIndex}].vertices[${vertexIndex}].tracks[${trackIndex}]`);
+        const track = record(rawTrack, datasetId, fileName, `events[${eventIndex}].vertices[${vertexIndex}].tracks[${trackIndex}]`);
         for (const field of ['track_index', 'pdg_id', 'charge', 'x_prod_mm', 'y_prod_mm', 'z_prod_mm', 'px_GeV', 'py_GeV', 'pz_GeV', 'd0_mm', 'transverse_distance_mm']) {
-          numberField(track, field, datasetId, 'events.json');
+          numberField(track, field, datasetId, fileName);
         }
         for (const field of ['passes_d0', 'selected_for_dv']) {
-          if (typeof track[field] !== 'boolean') throw new DatasetError(datasetId, 'events.json', `events[${eventIndex}].vertices[${vertexIndex}].tracks[${trackIndex}].${field}`, 'boolean', track[field]);
+          if (typeof track[field] !== 'boolean') throw new DatasetError(datasetId, fileName, `events[${eventIndex}].vertices[${vertexIndex}].tracks[${trackIndex}].${field}`, 'boolean', track[field]);
         }
         selectedTracks += Number(track.selected_for_dv);
         impactedTracks += Number(track.passes_d0);
         const expectedD0 = recastD0Mm(track as unknown as EventTrack);
         if (Math.abs((track.d0_mm as number) - expectedD0) > 1e-9 * Math.max(1, Math.abs(expectedD0))) {
-          throw new DatasetError(datasetId, 'events.json', `events[${eventIndex}].vertices[${vertexIndex}].tracks[${trackIndex}].d0_mm`, 'recast d0 proxy', track.d0_mm);
+          throw new DatasetError(datasetId, fileName, `events[${eventIndex}].vertices[${vertexIndex}].tracks[${trackIndex}].d0_mm`, 'recast d0 proxy', track.d0_mm);
         }
       }
       if (selectedTracks !== vertex.selected_track_count || impactedTracks !== vertex.impacted_track_count) {
-        throw new DatasetError(datasetId, 'events.json', `events[${eventIndex}].vertices[${vertexIndex}].tracks`, 'counts matching vertex summaries', { selectedTracks, impactedTracks });
+        throw new DatasetError(datasetId, fileName, `events[${eventIndex}].vertices[${vertexIndex}].tracks`, 'counts matching vertex summaries', { selectedTracks, impactedTracks });
       }
     }
   }

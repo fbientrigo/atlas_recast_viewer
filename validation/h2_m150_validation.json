@@ -1,0 +1,485 @@
+{
+  "dataset_id": "h2-m150",
+  "mass_GeV": 150,
+  "s_grid": [
+    1.0,
+    0.9,
+    0.8,
+    0.7,
+    0.6,
+    0.5,
+    0.4,
+    0.3,
+    0.2,
+    0.1
+  ],
+  "n_events_full_campaign": 20000,
+  "n_events_display_pack": 400,
+  "internal_adapter_validation": "PASSED",
+  "campaign_grid_validation": "PASSED",
+  "comparison_contract": "exact equality on raw counts; 1e-6 tolerance on the weighted acceptance_x_efficiency numerator (floating-point summation order)",
+  "checks": [
+    {
+      "name": "summary.jet_selection.n_after",
+      "expected": 460.0,
+      "observed": 460.0,
+      "passed": true
+    },
+    {
+      "name": "summary.fiducial_dv.n_after",
+      "expected": 460.0,
+      "observed": 460.0,
+      "passed": true
+    },
+    {
+      "name": "summary.rxy_gt_4_mm.n_after",
+      "expected": 373.0,
+      "observed": 373.0,
+      "passed": true
+    },
+    {
+      "name": "summary.d0_gt_2_mm.n_after",
+      "expected": 371.0,
+      "observed": 371.0,
+      "passed": true
+    },
+    {
+      "name": "summary.tracks_ge_5.n_after",
+      "expected": 371.0,
+      "observed": 371.0,
+      "passed": true
+    },
+    {
+      "name": "summary.mdv_gt_10_gev.n_after",
+      "expected": 370.0,
+      "observed": 370.0,
+      "passed": true
+    },
+    {
+      "name": "summary.acceptance_x_efficiency.weighted_numerator",
+      "expected": 267.50691929866827,
+      "observed": 267.5069192986683,
+      "passed": true
+    },
+    {
+      "name": "grid.s=1.0.jet_selection.n_after",
+      "expected": 460.0,
+      "observed": 460.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=1.0.fiducial_dv.n_after",
+      "expected": 460.0,
+      "observed": 460.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=1.0.rxy_gt_4_mm.n_after",
+      "expected": 373.0,
+      "observed": 373.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=1.0.d0_gt_2_mm.n_after",
+      "expected": 371.0,
+      "observed": 371.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=1.0.tracks_ge_5.n_after",
+      "expected": 371.0,
+      "observed": 371.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=1.0.mdv_gt_10_gev.n_after",
+      "expected": 370.0,
+      "observed": 370.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=1.0.acceptance_x_efficiency.weighted_numerator",
+      "expected": 267.50691929866827,
+      "observed": 267.5069192986683,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.9.jet_selection.n_after",
+      "expected": 671.0,
+      "observed": 671.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.9.fiducial_dv.n_after",
+      "expected": 671.0,
+      "observed": 671.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.9.rxy_gt_4_mm.n_after",
+      "expected": 525.0,
+      "observed": 525.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.9.d0_gt_2_mm.n_after",
+      "expected": 522.0,
+      "observed": 522.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.9.tracks_ge_5.n_after",
+      "expected": 522.0,
+      "observed": 522.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.9.mdv_gt_10_gev.n_after",
+      "expected": 521.0,
+      "observed": 521.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.9.acceptance_x_efficiency.weighted_numerator",
+      "expected": 398.8664735325457,
+      "observed": 398.8664735325457,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.8.jet_selection.n_after",
+      "expected": 1051.0,
+      "observed": 1051.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.8.fiducial_dv.n_after",
+      "expected": 1051.0,
+      "observed": 1051.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.8.rxy_gt_4_mm.n_after",
+      "expected": 816.0,
+      "observed": 816.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.8.d0_gt_2_mm.n_after",
+      "expected": 813.0,
+      "observed": 813.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.8.tracks_ge_5.n_after",
+      "expected": 812.0,
+      "observed": 812.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.8.mdv_gt_10_gev.n_after",
+      "expected": 811.0,
+      "observed": 811.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.8.acceptance_x_efficiency.weighted_numerator",
+      "expected": 640.1673054180781,
+      "observed": 640.1673054180782,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.7.jet_selection.n_after",
+      "expected": 1678.0,
+      "observed": 1678.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.7.fiducial_dv.n_after",
+      "expected": 1678.0,
+      "observed": 1678.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.7.rxy_gt_4_mm.n_after",
+      "expected": 1271.0,
+      "observed": 1271.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.7.d0_gt_2_mm.n_after",
+      "expected": 1267.0,
+      "observed": 1267.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.7.tracks_ge_5.n_after",
+      "expected": 1266.0,
+      "observed": 1266.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.7.mdv_gt_10_gev.n_after",
+      "expected": 1264.0,
+      "observed": 1264.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.7.acceptance_x_efficiency.weighted_numerator",
+      "expected": 975.0345819329218,
+      "observed": 975.0345819329218,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.6.jet_selection.n_after",
+      "expected": 2711.0,
+      "observed": 2711.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.6.fiducial_dv.n_after",
+      "expected": 2711.0,
+      "observed": 2711.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.6.rxy_gt_4_mm.n_after",
+      "expected": 1955.0,
+      "observed": 1955.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.6.d0_gt_2_mm.n_after",
+      "expected": 1951.0,
+      "observed": 1951.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.6.tracks_ge_5.n_after",
+      "expected": 1950.0,
+      "observed": 1950.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.6.mdv_gt_10_gev.n_after",
+      "expected": 1946.0,
+      "observed": 1946.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.6.acceptance_x_efficiency.weighted_numerator",
+      "expected": 1320.4971807589413,
+      "observed": 1320.4971807589416,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.5.jet_selection.n_after",
+      "expected": 4440.0,
+      "observed": 4440.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.5.fiducial_dv.n_after",
+      "expected": 4440.0,
+      "observed": 4440.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.5.rxy_gt_4_mm.n_after",
+      "expected": 2989.0,
+      "observed": 2989.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.5.d0_gt_2_mm.n_after",
+      "expected": 2982.0,
+      "observed": 2982.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.5.tracks_ge_5.n_after",
+      "expected": 2980.0,
+      "observed": 2980.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.5.mdv_gt_10_gev.n_after",
+      "expected": 2973.0,
+      "observed": 2973.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.5.acceptance_x_efficiency.weighted_numerator",
+      "expected": 1643.6539536333717,
+      "observed": 1643.6539536333717,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.4.jet_selection.n_after",
+      "expected": 7220.0,
+      "observed": 7220.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.4.fiducial_dv.n_after",
+      "expected": 7220.0,
+      "observed": 7220.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.4.rxy_gt_4_mm.n_after",
+      "expected": 4498.0,
+      "observed": 4498.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.4.d0_gt_2_mm.n_after",
+      "expected": 4490.0,
+      "observed": 4490.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.4.tracks_ge_5.n_after",
+      "expected": 4487.0,
+      "observed": 4487.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.4.mdv_gt_10_gev.n_after",
+      "expected": 4478.0,
+      "observed": 4478.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.4.acceptance_x_efficiency.weighted_numerator",
+      "expected": 1896.9681442633955,
+      "observed": 1896.9681442633955,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.3.jet_selection.n_after",
+      "expected": 11193.0,
+      "observed": 11193.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.3.fiducial_dv.n_after",
+      "expected": 11193.0,
+      "observed": 11193.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.3.rxy_gt_4_mm.n_after",
+      "expected": 6376.0,
+      "observed": 6376.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.3.d0_gt_2_mm.n_after",
+      "expected": 6363.0,
+      "observed": 6363.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.3.tracks_ge_5.n_after",
+      "expected": 6356.0,
+      "observed": 6356.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.3.mdv_gt_10_gev.n_after",
+      "expected": 6343.0,
+      "observed": 6343.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.3.acceptance_x_efficiency.weighted_numerator",
+      "expected": 2055.8477138107755,
+      "observed": 2055.8477138107755,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.2.jet_selection.n_after",
+      "expected": 15529.0,
+      "observed": 15529.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.2.fiducial_dv.n_after",
+      "expected": 15529.0,
+      "observed": 15529.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.2.rxy_gt_4_mm.n_after",
+      "expected": 8206.0,
+      "observed": 8206.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.2.d0_gt_2_mm.n_after",
+      "expected": 8188.0,
+      "observed": 8188.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.2.tracks_ge_5.n_after",
+      "expected": 8174.0,
+      "observed": 8174.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.2.mdv_gt_10_gev.n_after",
+      "expected": 8156.0,
+      "observed": 8156.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.2.acceptance_x_efficiency.weighted_numerator",
+      "expected": 2121.11900500862,
+      "observed": 2121.11900500862,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.1.jet_selection.n_after",
+      "expected": 17358.0,
+      "observed": 17358.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.1.fiducial_dv.n_after",
+      "expected": 17358.0,
+      "observed": 17358.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.1.rxy_gt_4_mm.n_after",
+      "expected": 8948.0,
+      "observed": 8948.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.1.d0_gt_2_mm.n_after",
+      "expected": 8929.0,
+      "observed": 8929.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.1.tracks_ge_5.n_after",
+      "expected": 8912.0,
+      "observed": 8912.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.1.mdv_gt_10_gev.n_after",
+      "expected": 8892.0,
+      "observed": 8892.0,
+      "passed": true
+    },
+    {
+      "name": "grid.s=0.1.acceptance_x_efficiency.weighted_numerator",
+      "expected": 2137.7077098018412,
+      "observed": 2137.7077098018412,
+      "passed": true
+    }
+  ]
+}
