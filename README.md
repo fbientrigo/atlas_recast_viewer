@@ -111,3 +111,7 @@ subset via telemetry replay of the frozen campaign LHE/seed — see
 `docs/DATA_CONTRACT.md`'s "Optional geometry pack" section for the schema.
 The same `GeometryViewer`/`ObjectInspector` render it unmodified; `s` changes
 classification only, never the 100 events' stored geometry.
+
+## Restoring data
+
+`public/data/` (296 MB, served by `make build` via `publicDir`) and `validation/h2_geometry_telemetry/` (298 MB) are not tracked; they are in lake commit `20261013T002548Z-190699` (sha256-identical to what git held before). From a fresh checkout run `make restore-data` (needs `rclone` with the `dihiggs_lake` remote, see `../lake/README.md`) before `make build`, `make test` or `make validate-h2`. The root Pages site (`site/`) does not build the viewer and needs no restore. `make h2-datasets` regenerates `public/data` from the campaigns instead.

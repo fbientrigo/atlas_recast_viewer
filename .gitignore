@@ -6,3 +6,6 @@ frontend/node_modules/
 dist/
 graphify-out/
 validation/local_reference/build/
+# bulk data lives in the lake: `make restore-data` (README "Restoring data")
+public/data/
+validation/h2_geometry_telemetry/

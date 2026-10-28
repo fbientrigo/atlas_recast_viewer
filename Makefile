@@ -6,9 +6,17 @@ ATLAS_DIHIGGS_ROOT := ..
 H2_MASSES := 130 150 170 200 250 300 330 345
 MASS ?= 150
 
-.PHONY: dataset local-dataset validate validate-local test frontend-test build check \
+.PHONY: restore-data dataset local-dataset validate validate-local test frontend-test build check \
 	h2-dataset h2-datasets validate-h2 catalog \
 	h2-geometry-selection h2-geometry h2-geometries
+
+# public/data and validation/h2_geometry_telemetry are not in git (594 MB); they live in lake commit
+# LAKE_CID. Restore into a temp dir (the tracked files may be newer than the commit), copy only those two trees.
+LAKE_CID := 20261013T002548Z-190699
+restore-data:
+	tmp=$$(mktemp -d) && python3 ../lake/lake.py restore $(LAKE_CID) $$tmp && \
+	mkdir -p public validation && cp -a $$tmp/public/data public/ && \
+	cp -a $$tmp/validation/h2_geometry_telemetry validation/ && rm -rf $$tmp
 
 dataset:
 	$(PYTHON) -m preprocess.adapters.original_recast \
